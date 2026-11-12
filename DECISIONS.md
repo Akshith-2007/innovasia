@@ -699,3 +699,45 @@ labelled "not a measurement"; validate against a real discharge test.
 
 Related modules:
 backend/app/services/device_service.py, backend/app/api/device.py, frontend/src/pages/AdminPage.tsx
+
+---
+
+## ADR-026: Farmer lot register and multi-mandi sale plans (partly supersedes the spec exclusions)
+
+Date: 2026-11-12
+Status: Accepted
+
+Context:
+The owner asked for a farmer portal inside the admin portal: log storage lots, then use the forecasts to
+decide when and where to sell, counting distance, transport and storage costs. The original spec excluded
+a farmer application, inventory management and financial records; the owner's request overrides that for
+this admin-only, file-based feature.
+
+Decision:
+- Admin-only (ADR-024 password). Lots hold farmer name, village, commodity, optional variety/grade,
+  quantity (quintals) and entry date. No phone numbers, IDs or payments. Stored in data/farmer/lots.json.
+- Facility settings (data/farmer/settings.json): cold-storage district, transport ₹ per quintal per km,
+  storage rent ₹/quintal/month, expected loss %/30 days (all required), optional commission %, optional
+  maximum km, and per-mandi km overrides. Nothing is assumed: a plan without them returns input_required.
+- Distance: offline table of district-headquarters coordinates (TG, AP, Karnataka; hand-entered,
+  ±5-10 km), straight line x 1.3 road factor, labelled "approx."; admin overrides win (owner's choice;
+  no external geocoding).
+- Transport = quantity x km x ₹/q/km (owner's choice).
+- Plan: every mandi with a current series (price in the last 30 days) for the lot's commodity (lot's
+  variety if given, else each mandi's most-recorded one) and an evaluated model; options sell now
+  (latest recorded price) and after 7/14/30 days (horizon models, ADR-023). Net = sale value after loss
+  - commission - transport - storage rent from the entry date; ranked by net. Reuses the planner's
+  tested scenario() maths. Mandis without enough history are counted and reported, not guessed.
+- Batch forecasting filters prices to the commodity once (about 1-9 s per plan on 1.5M rows).
+
+Alternatives:
+Typed distances only; OpenStreetMap routing (external service); per-trip vehicle costing (owner chose per q/km).
+
+Consequences:
+Personal data is limited to names and villages in a local file; protect the machine and the admin password.
+Distances are approximate. Coverage is limited by AGMARKNET's Dec 2025 market renaming (fewer mandis
+with long enough history) until names are harmonised.
+
+Related modules:
+backend/app/services/farmer_service.py, backend/app/services/geo.py, backend/app/api/farmer.py,
+backend/app/ml/predictor.py, frontend/src/components/admin/FarmerPortal.tsx, frontend/src/pages/AdminPage.tsx

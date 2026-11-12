@@ -73,6 +73,15 @@ cleanup() {
   for pid in "${PIDS[@]:-}"; do
     [ -n "$pid" ] && kill "$pid" 2>/dev/null || true
   done
+  # Windows: Git Bash exec can re-spawn processes, so recorded PIDs may miss children. Both ports were
+  # verified free at start, so whatever listens on them now is ours: stop those process trees too.
+  if command -v taskkill >/dev/null 2>&1; then
+    for port in "$API_PORT" "$WEB_PORT"; do
+      for wp in $(netstat -ano 2>/dev/null | awk -v p=":$port" '$4 == "LISTENING" && substr($2, length($2) - length(p) + 1) == p {print $5}' | sort -u); do
+        taskkill //F //T //PID "$wp" >/dev/null 2>&1 || true
+      done
+    done
+  fi
   wait 2>/dev/null || true
 }
 trap cleanup INT TERM EXIT

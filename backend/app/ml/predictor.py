@@ -116,10 +116,7 @@ def predict(query: dict[str, str | None], model: LoadedModel | None = None) -> d
     }
 
 
-def forecast_horizons(query: dict[str, str | None], model: LoadedModel | None = None) -> dict[str, Any]:
-    """Price expected 7/14/30 days after the latest observation, with each horizon's own test record."""
-    model = model or get_model()
-    key, series, row = _prepare(query, model)
+def _horizons(model: LoadedModel, key: tuple[str, ...], row: pd.DataFrame) -> list[dict[str, Any]]:
     last_price = float(row["modal_price"].iat[0])
     latest_date = pd.Timestamp(row["arrival_date"].iat[0]).date()
     out = []
@@ -142,10 +139,35 @@ def forecast_horizons(query: dict[str, str | None], model: LoadedModel | None = 
             "naive_test_metrics_overall": hm["results"]["naive_last"]["test"],
             "test_metrics_series": _series_metrics(hm.get("per_series_test", []), key),
         })
+    return out
+
+
+def forecast_horizons(query: dict[str, str | None], model: LoadedModel | None = None) -> dict[str, Any]:
+    """Price expected 7/14/30 days after the latest observation, with each horizon's own test record."""
+    model = model or get_model()
+    key, series, row = _prepare(query, model)
     return {
         "series": series,
-        "latest_observation": {"date": str(latest_date), "modal_price": last_price},
-        "horizons": out,
+        "latest_observation": {"date": str(pd.Timestamp(row["arrival_date"].iat[0]).date()),
+                               "modal_price": float(row["modal_price"].iat[0])},
+        "horizons": _horizons(model, key, row),
         "model_version": model.version,
         "data_cutoff": model.metadata["data_cutoff"],
     }
+
+
+def forecast_series_batch(prices: pd.DataFrame, keys: list[tuple[str, ...]], model: LoadedModel) -> dict[tuple, dict]:
+    """Horizon forecasts for many eligible series; pass `prices` pre-filtered (e.g. to one commodity) for speed."""
+    out: dict[tuple, dict] = {}
+    for key in keys:
+        if key not in model.eligible_keys:
+            continue
+        row, _ = _series_row(prices, key, model.metadata["encodings"])
+        if row.empty or row[F.FEATURES].isna().any(axis=None):
+            continue
+        out[key] = {
+            "latest_observation": {"date": str(pd.Timestamp(row["arrival_date"].iat[0]).date()),
+                                   "modal_price": float(row["modal_price"].iat[0])},
+            "horizons": _horizons(model, key, row),
+        }
+    return out

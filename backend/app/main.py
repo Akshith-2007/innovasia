@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import agriculture, commodities, decision, device, health, markets, predictions, prices, sources
+from app.api import agriculture, commodities, decision, device, farmer, health, markets, predictions, prices, sources
 from app.core.config import get_settings
 from app.core.exceptions import AppError, app_error_handler
 from app.core.logging import configure_logging
@@ -19,7 +19,7 @@ app.add_middleware(RateLimitMiddleware, per_minute=get_settings().rate_limit_per
 app.add_middleware(
     CORSMiddleware,
     allow_origins=get_settings().cors_origin_list,
-    allow_methods=["GET", "POST", "PUT"],
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["Content-Type", "X-Admin-Password"],
 )
 app.add_exception_handler(AppError, app_error_handler)
@@ -36,7 +36,7 @@ async def security_headers(request: Request, call_next):
 API = "/api/v1"
 for r in (
     health.router, markets.router, commodities.router, prices.router,
-    agriculture.router, predictions.router, sources.router, decision.router, device.router,
+    agriculture.router, predictions.router, sources.router, decision.router, device.router, farmer.router,
 ):
     app.include_router(r, prefix=API)
 

@@ -8,6 +8,7 @@ import { ErrorState, LoadingBlock } from "@/components/layout/States";
 import { Badge } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn, formatNumber } from "@/lib/utils";
+import { FarmerPortal } from "@/components/admin/FarmerPortal";
 import { api, ApiError } from "@/services/api";
 
 type Reading = { chamber_temp_c: number | null; humidity_pct: number | null; coil_temp_c: number | null; pump_on: boolean };
@@ -82,8 +83,37 @@ export default function AdminPage() {
           </Button>
         ) : null}
       </div>
-      <div className="mt-10">{password ? <Dashboard password={password} onAuthFail={() => save("")} /> : <Login onLogin={save} />}</div>
+      <div className="mt-10">{password ? <Tabs password={password} onAuthFail={() => save("")} /> : <Login onLogin={save} />}</div>
     </section>
+  );
+}
+
+function Tabs({ password, onAuthFail }: { password: string; onAuthFail: () => void }) {
+  const [tab, setTab] = useState<"chamber" | "lots">("chamber");
+  const tabs = [
+    { id: "chamber", label: "Chamber monitor" },
+    { id: "lots", label: "Farmer lots & sale plans" },
+  ] as const;
+  return (
+    <div className="space-y-8">
+      <div role="tablist" aria-label="Admin sections" className="flex flex-wrap gap-2 border-b border-line pb-3">
+        {tabs.map((t) => (
+          <button
+            key={t.id}
+            role="tab"
+            aria-selected={tab === t.id}
+            onClick={() => setTab(t.id)}
+            className={cn(
+              "rounded-full px-4 py-2 text-sm font-semibold transition-colors",
+              tab === t.id ? "bg-forest text-paper" : "text-forest hover:bg-sage-soft",
+            )}
+          >
+            {t.label}
+          </button>
+        ))}
+      </div>
+      <div role="tabpanel">{tab === "chamber" ? <Dashboard password={password} onAuthFail={onAuthFail} /> : <FarmerPortal password={password} />}</div>
+    </div>
   );
 }
 

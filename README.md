@@ -157,6 +157,16 @@ state. PCM backup time is calculated from the PCM mass, latent heat and the heat
 the insulation (enter these in the portal, ADR-025); it is an estimate, not a measurement. Traffic is
 plain HTTP: use only on a trusted Wi-Fi network.
 
+## Farmer lots and sale plans (admin portal, ADR-026)
+
+Admin portal → **Farmer lots & sale plans**:
+1. Cold storage settings: the storage's district, transport ₹ per quintal per km, storage rent, expected
+   loss % per 30 days, optional commission % and maximum distance.
+2. Add a lot: farmer name, village, commodity (optional variety), quantity in quintals, entry date.
+3. **Sale plan** ranks every mandi with a current forecast for that commodity: sell now or after
+   7/14/30 days, net money after loss, transport (district-to-district km, approx.), storage rent from
+   the entry date and fees. Lots and settings are stored in `backend/data/farmer/`.
+
 ## Validation and processing
 
 ```bash
@@ -182,7 +192,7 @@ has enough history, training stops with `INSUFFICIENT DATA` and creates no model
 ## Testing
 
 ```bash
-cd backend && .venv/Scripts/python -m pytest    # 53 tests: provider errors, pagination, CSV import, validation, leakage, splits, API
+cd backend && .venv/Scripts/python -m pytest    # 60 tests: provider errors, pagination, CSV import, validation, leakage, splits, API
 cd frontend && npm test                          # 14 tests: states, source labels, no fake values, all pages render
 cd frontend && npm run typecheck && npm run build
 cd frontend && npm run test:e2e                  # Playwright + axe at desktop/tablet/mobile (first time: npx playwright install chromium)
