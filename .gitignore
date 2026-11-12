@@ -13,12 +13,10 @@ __pycache__/
 frontend/node_modules/
 frontend/dist/
 
-# downloaded / generated data and models (reproducible via documented commands)
+# downloaded / generated data (reproducible via documented commands); trained models ARE committed
 backend/data/raw/**/
 backend/data/processed/*.parquet
 backend/data/metadata/*.json
-backend/models/price_model/
-backend/models/current.json
 !**/.gitkeep
 
 # editors / OS
@@ -28,3 +26,6 @@ backend/models/current.json
 Thumbs.db
 frontend/test-results/
 frontend/playwright-report/
+# farmer lots hold names/phones (ADR-026)
+backend/data/lots/
+backend/data/farmer/

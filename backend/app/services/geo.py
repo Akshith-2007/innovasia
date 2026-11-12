@@ -1,4 +1,4 @@
-"""Approximate district-headquarters coordinates for distance estimates (ADR-026).
+"""Approximate district-headquarters coordinates for distance estimates (ADR-027).
 
 shortcut: hand-entered HQ coordinates (±5-10 km) and straight-line distance x 1.3 road factor;
 replace with surveyed mandi locations or a routing service if accuracy matters. Admins can override km per mandi.

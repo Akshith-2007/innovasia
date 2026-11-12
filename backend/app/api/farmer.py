@@ -1,4 +1,4 @@
-"""Farmer lot register and sale plans (admin password). ADR-026."""
+"""Farmer lot register and sale plans (admin password). ADR-027."""
 
 from datetime import date
 
@@ -43,24 +43,24 @@ def put_settings(change: FarmerSettings):
     return Envelope(data=farmer_service.update_settings(change.model_dump(exclude_unset=True)))
 
 
-@router.get("/lots", response_model=Envelope[list[dict]])
+@router.get("/farmer/lots", response_model=Envelope[list[dict]])
 def lots():
     return Envelope(data=farmer_service.list_lots())
 
 
-@router.post("/lots", response_model=Envelope[dict])
+@router.post("/farmer/lots", response_model=Envelope[dict])
 def add_lot(lot: Lot):
     data = lot.model_dump()
     data["entry_date"] = str(data["entry_date"])
     return Envelope(data=farmer_service.add_lot(data))
 
 
-@router.delete("/lots/{lot_id}", response_model=Envelope[dict])
+@router.delete("/farmer/lots/{lot_id}", response_model=Envelope[dict])
 def delete_lot(lot_id: str):
     farmer_service.delete_lot(lot_id)
     return Envelope(data={"deleted": lot_id})
 
 
-@router.get("/lots/{lot_id}/plan", response_model=Envelope[dict])
+@router.get("/farmer/lots/{lot_id}/plan", response_model=Envelope[dict])
 def lot_plan(lot_id: str):
     return Envelope(data=farmer_service.plan(lot_id))

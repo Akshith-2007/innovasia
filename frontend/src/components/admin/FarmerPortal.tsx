@@ -212,9 +212,9 @@ function SettingsForm({
 
 function LotsPanel({ headers, openLot, onOpen }: { headers: Record<string, string>; openLot: string | null; onOpen: (id: string | null) => void }) {
   const qc = useQueryClient();
-  const lots = useQuery({ queryKey: ["lots"], queryFn: () => api.get<Lot[]>("/admin/lots", undefined, headers), retry: false });
+  const lots = useQuery({ queryKey: ["lots"], queryFn: () => api.get<Lot[]>("/admin/farmer/lots", undefined, headers), retry: false });
   const del = useMutation({
-    mutationFn: (id: string) => api.delete(`/admin/lots/${id}`, headers),
+    mutationFn: (id: string) => api.del(`/admin/farmer/lots/${id}`, headers),
     onSuccess: (_, id) => {
       if (openLot === id) onOpen(null);
       qc.invalidateQueries({ queryKey: ["lots"] });
@@ -292,7 +292,7 @@ function AddLot({ headers, onAdded }: { headers: Record<string, string>; onAdded
   const add = useMutation({
     mutationFn: () => {
       const [variety, grade] = f.varietyGrade ? f.varietyGrade.split("||") : [null, null];
-      return api.post<Lot>("/admin/lots", { farmer_name: f.farmer, village: f.village, commodity: f.commodity, variety, grade, quantity_q: Number(f.qty), entry_date: f.date }, headers);
+      return api.post<Lot>("/admin/farmer/lots", { farmer_name: f.farmer, village: f.village, commodity: f.commodity, variety, grade, quantity_q: Number(f.qty), entry_date: f.date }, headers);
     },
     onSuccess: (res) => {
       qc.invalidateQueries({ queryKey: ["lots"] });
@@ -343,7 +343,7 @@ const WHEN = (d: number) => (d === 0 ? "Sell now" : `In ${d} days`);
 function PlanPanel({ lotId, headers }: { lotId: string; headers: Record<string, string> }) {
   const q = useQuery({
     queryKey: ["lot-plan", lotId],
-    queryFn: () => api.get<Plan>(`/admin/lots/${lotId}/plan`, undefined, headers),
+    queryFn: () => api.get<Plan>(`/admin/farmer/lots/${lotId}/plan`, undefined, headers),
     retry: false,
   });
   if (q.isLoading) return <LoadingBlock label="Comparing mandis and selling days" />;

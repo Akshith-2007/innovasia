@@ -3,6 +3,7 @@ import { AlertTriangle, CheckCircle2, Droplets, Info, LogOut, Power, Thermometer
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
+import { FarmerLots } from "@/components/admin/FarmerLots";
 import { axisProps, chartColors } from "@/components/charts/theme";
 import { ErrorState, LoadingBlock } from "@/components/layout/States";
 import { Badge } from "@/components/ui/card";
@@ -89,9 +90,10 @@ export default function AdminPage() {
 }
 
 function Tabs({ password, onAuthFail }: { password: string; onAuthFail: () => void }) {
-  const [tab, setTab] = useState<"chamber" | "lots">("chamber");
+  const [tab, setTab] = useState<"chamber" | "compare" | "lots">("chamber");
   const tabs = [
     { id: "chamber", label: "Chamber monitor" },
+    { id: "compare", label: "Lots: best mandi by distance" },
     { id: "lots", label: "Farmer lots & sale plans" },
   ] as const;
   return (
@@ -112,7 +114,15 @@ function Tabs({ password, onAuthFail }: { password: string; onAuthFail: () => vo
           </button>
         ))}
       </div>
-      <div role="tabpanel">{tab === "chamber" ? <Dashboard password={password} onAuthFail={onAuthFail} /> : <FarmerPortal password={password} />}</div>
+      <div role="tabpanel">
+        {tab === "chamber" ? (
+          <Dashboard password={password} onAuthFail={onAuthFail} />
+        ) : tab === "compare" ? (
+          <FarmerLots password={password} />
+        ) : (
+          <FarmerPortal password={password} />
+        )}
+      </div>
     </div>
   );
 }

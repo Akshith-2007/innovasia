@@ -1,4 +1,4 @@
-"""Farmer lots and sale plans (ADR-026). Series are TEST VALUES in temp dirs."""
+"""Farmer lots and sale plans (ADR-027). Series are TEST VALUES in temp dirs."""
 
 from datetime import date, timedelta
 
@@ -40,17 +40,17 @@ def test_road_km_is_plausible():
 
 
 def test_lots_need_admin_and_valid_input(client):
-    assert client.get("/api/v1/admin/lots").status_code == 401
-    bad = client.post("/api/v1/admin/lots", headers=ADM, json={"farmer_name": "A", "village": "V", "commodity": "Onion",
+    assert client.get("/api/v1/admin/farmer/lots").status_code == 401
+    bad = client.post("/api/v1/admin/farmer/lots", headers=ADM, json={"farmer_name": "A", "village": "V", "commodity": "Onion",
                                                                "quantity_q": -5, "entry_date": "2026-01-01"})
     assert bad.status_code == 422
 
 
 def test_plan_requires_settings_then_ranks_mandis(client):
-    lot = client.post("/api/v1/admin/lots", headers=ADM, json={
+    lot = client.post("/api/v1/admin/farmer/lots", headers=ADM, json={
         "farmer_name": "Test Farmer", "village": "Test Village", "commodity": "Onion",
         "quantity_q": 10, "entry_date": str(LAST - timedelta(days=10))}).json()["data"]
-    r = client.get(f"/api/v1/admin/lots/{lot['id']}/plan", headers=ADM)
+    r = client.get(f"/api/v1/admin/farmer/lots/{lot['id']}/plan", headers=ADM)
     assert r.status_code == 422 and "storage_district" in r.json()["error"]["details"]["fields"]
 
     client.put("/api/v1/admin/farmer/settings", headers=ADM, json={
@@ -80,8 +80,8 @@ def test_unknown_district_rejected(client):
 
 
 def test_delete_lot(client):
-    lot = client.post("/api/v1/admin/lots", headers=ADM, json={"farmer_name": "A", "village": "V", "commodity": "Onion",
+    lot = client.post("/api/v1/admin/farmer/lots", headers=ADM, json={"farmer_name": "A", "village": "V", "commodity": "Onion",
                                                                "quantity_q": 1, "entry_date": "2026-01-01"}).json()["data"]
-    assert client.delete(f"/api/v1/admin/lots/{lot['id']}", headers=ADM).status_code == 200
-    assert client.get("/api/v1/admin/lots", headers=ADM).json()["data"] == []
-    assert client.delete(f"/api/v1/admin/lots/{lot['id']}", headers=ADM).status_code == 404
+    assert client.delete(f"/api/v1/admin/farmer/lots/{lot['id']}", headers=ADM).status_code == 200
+    assert client.get("/api/v1/admin/farmer/lots", headers=ADM).json()["data"] == []
+    assert client.delete(f"/api/v1/admin/farmer/lots/{lot['id']}", headers=ADM).status_code == 404

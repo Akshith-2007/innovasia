@@ -16,7 +16,7 @@ This is NOT the farmer mobile application.
 
 ## 2. Non-negotiable restrictions
 
-- Do not create a farmer application. The admin-only farmer lot register of ADR-026 is the only exception.
+- Do not create a farmer application. The admin-only farmer lot features of ADR-026 and ADR-027 are the only exceptions.
 - Do not introduce authentication beyond the single admin password and device key of ADR-024.
 - Do not introduce a database.
 - Do not add PostgreSQL, MongoDB or Redis.

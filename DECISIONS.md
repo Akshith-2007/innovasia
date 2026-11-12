@@ -702,12 +702,50 @@ backend/app/services/device_service.py, backend/app/api/device.py, frontend/src/
 
 ---
 
-## ADR-026: Farmer lot register and multi-mandi sale plans (partly supersedes the spec exclusions)
+## ADR-026: Farmer lots and best-mandi comparison with transport fare
 
 Date: 2026-11-12
 Status: Accepted
 
 Context:
+The owner asked for the admin to record a farmer's lot with its location and details, forecast
+prices at nearby mandis, and say which gives the most profit after transporting the lot to the mandi.
+The repository has no mandi coordinates, and the owner asked for the most feasible approach.
+
+Decision:
+- Admin-only endpoints (`X-Admin-Password`, ADR-024): `GET/POST /admin/lots`, `DELETE /admin/lots/{id}`,
+  `GET /admin/lots/{id}/compare`. Lots are stored in `data/lots/lots.json` (atomic replace), no database.
+- A lot records farmer name, phone (required), village, state, optional latitude/longitude (typed or from the
+  browser's geolocation), commodity, quantity, optional production cost, fee %, storage choice, and a
+  list of candidate mandis, each with the road distance in km entered by the admin.
+- Transport fare = distance_km x rate (INR per quintal per km, owner's choice) x quantity, one way.
+  The rate has no default; the admin enters it.
+- For each mandi the storage planner (ADR-023) runs on that mandi's own series with that mandi's transport
+  cost. The best option per mandi and overall is the highest net receipts. Mandis without a supported series
+  or model report the reason and get no figure; nothing is borrowed from another mandi.
+
+Alternatives:
+Automatic distances via OpenStreetMap Nominatim/OSRM (new third-party source, unreliable mandi geocoding,
+outbound calls; not done now). Per-vehicle-trip fares (owner chose per quintal per km).
+
+Consequences:
+Distances are only as good as the admin's entry. Lot data includes farmer names and phone numbers stored
+in plain JSON on the server; it is reachable only with the admin password, over the same plain-HTTP caveat as ADR-024.
+
+Related modules:
+backend/app/services/lot_service.py, backend/app/api/lots.py, backend/tests/test_lots.py,
+frontend/src/components/admin/FarmerLots.tsx, frontend/src/pages/AdminPage.tsx, frontend/src/services/api.ts
+
+---
+
+## ADR-027: Farmer lot register with automatic distances and 7/14/30-day sale plans (coexists with ADR-026)
+
+Date: 2026-11-12
+Status: Accepted
+
+Context:
+Developed in parallel with ADR-026 and merged on 2026-11-12; both features are kept. ADR-026 uses
+admin-typed distances per lot at /admin/lots; this one uses district-HQ distances at /admin/farmer/lots.
 The owner asked for a farmer portal inside the admin portal: log storage lots, then use the forecasts to
 decide when and where to sell, counting distance, transport and storage costs. The original spec excluded
 a farmer application, inventory management and financial records; the owner's request overrides that for
@@ -715,7 +753,7 @@ this admin-only, file-based feature.
 
 Decision:
 - Admin-only (ADR-024 password). Lots hold farmer name, village, commodity, optional variety/grade,
-  quantity (quintals) and entry date. No phone numbers, IDs or payments. Stored in data/farmer/lots.json.
+  quantity (quintals) and entry date. No phone numbers, IDs or payments. Stored in data/farmer/lots.json (git-ignored).
 - Facility settings (data/farmer/settings.json): cold-storage district, transport ₹ per quintal per km,
   storage rent ₹/quintal/month, expected loss %/30 days (all required), optional commission %, optional
   maximum km, and per-mandi km overrides. Nothing is assumed: a plan without them returns input_required.

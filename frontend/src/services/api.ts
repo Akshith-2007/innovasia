@@ -61,14 +61,14 @@ export const api = {
       body: JSON.stringify(body),
     });
   },
-  delete<T>(path: string, headers?: HeadersInit) {
-    return request<Envelope<T>>(url(path), { method: "DELETE", headers });
-  },
   put<T>(path: string, body: unknown, headers?: HeadersInit) {
     return request<Envelope<T>>(url(path), {
       method: "PUT",
       headers: { "Content-Type": "application/json", ...headers },
       body: JSON.stringify(body),
     });
+  },
+  del<T>(path: string, headers?: HeadersInit) {
+    return request<Envelope<T>>(url(path), { method: "DELETE", headers });
   },
 };

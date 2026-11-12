@@ -22,6 +22,7 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser()
     p.add_argument("--assess", action="store_true", help="only print historical coverage")
     p.add_argument("--no-xgboost", action="store_true")
+    p.add_argument("--no-random-forest", action="store_true", help="faster: baselines + XGBoost only (ADR-023)")
     args = p.parse_args(argv)
     s = get_settings()
     if not s.market_prices_path.exists():
@@ -34,7 +35,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.assess:
         return 0
 
-    candidates = ("random_forest",) if args.no_xgboost else ("random_forest", "xgboost")
+    candidates = tuple(c for c, off in (("random_forest", args.no_random_forest), ("xgboost", args.no_xgboost)) if not off)
     try:
         meta = training.train(s.market_prices_path, s.models_dir, candidates)
     except training.InsufficientHistory as exc:

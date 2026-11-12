@@ -157,9 +157,18 @@ state. PCM backup time is calculated from the PCM mass, latent heat and the heat
 the insulation (enter these in the portal, ADR-025); it is an estimate, not a measurement. Traffic is
 plain HTTP: use only on a trusted Wi-Fi network.
 
-## Farmer lots and sale plans (admin portal, ADR-026)
+## Farmer lots: best mandi after transport (ADR-026)
 
-Admin portal → **Farmer lots & sale plans**:
+In the admin portal, **Lots: best mandi by distance** tab → **Add lot** records the farmer, village and location (typed or
+"Use this device's location"), commodity, quantity, costs, the transport fare in ₹ per quintal per km,
+and the nearby mandis with their road distance in km (enter from a map; distances are never guessed).
+Optionally pick a storage option to also compare the 7/14/30-day forecasts. **Best mandi** then shows,
+for every mandi, net receipts after transport (km × rate × quantity), fees and storage, and highlights
+the mandi and selling time that pays the most. Mandis without enough history show the reason, not a number.
+
+## Farmer lots and 7/14/30-day sale plans (admin portal, ADR-027)
+
+Admin portal → **Farmer lots & sale plans** tab (automatic district distances):
 1. Cold storage settings: the storage's district, transport ₹ per quintal per km, storage rent, expected
    loss % per 30 days, optional commission % and maximum distance.
 2. Add a lot: farmer name, village, commodity (optional variety), quantity in quintals, entry date.
@@ -192,8 +201,8 @@ has enough history, training stops with `INSUFFICIENT DATA` and creates no model
 ## Testing
 
 ```bash
-cd backend && .venv/Scripts/python -m pytest    # 60 tests: provider errors, pagination, CSV import, validation, leakage, splits, API
-cd frontend && npm test                          # 14 tests: states, source labels, no fake values, all pages render
+cd backend && .venv/Scripts/python -m pytest    # 64 tests: provider errors, pagination, CSV import, validation, leakage, splits, API
+cd frontend && npm test                          # 18 tests: states, source labels, no fake values, all pages render
 cd frontend && npm run typecheck && npm run build
 cd frontend && npm run test:e2e                  # Playwright + axe at desktop/tablet/mobile (first time: npx playwright install chromium)
 python docs/generate_graph.py --check            # knowledge graph matches the code

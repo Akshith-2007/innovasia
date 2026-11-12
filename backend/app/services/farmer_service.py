@@ -1,4 +1,4 @@
-"""Farmer lots in the cold store and their sale plans across mandis (ADR-026).
+"""Farmer lots in the cold store and their sale plans across mandis (ADR-027).
 
 Files only: data/farmer/lots.json and data/farmer/settings.json (atomic writes, process lock).
 shortcut: single cold-storage facility and a JSON file; move to per-facility files before many sites/users.

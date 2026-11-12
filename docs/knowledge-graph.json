@@ -427,6 +427,30 @@
       "path": "firmware/kisan_cold_link_esp32/kisan_cold_link_esp32.ino"
     },
     {
+      "id": "cmp_lots",
+      "group": "components",
+      "label": "FarmerLots",
+      "path": "frontend/src/components/admin/FarmerLots.tsx"
+    },
+    {
+      "id": "ep_lots",
+      "group": "endpoints",
+      "label": "GET/POST /admin/lots, DELETE /admin/lots/{id}, GET /admin/lots/{id}/compare",
+      "path": "backend/app/api/lots.py"
+    },
+    {
+      "id": "svc_lots",
+      "group": "services",
+      "label": "lot_service",
+      "path": "backend/app/services/lot_service.py"
+    },
+    {
+      "id": "d_lots",
+      "group": "data",
+      "label": "data/lots/lots.json",
+      "path": "backend/data"
+    },
+    {
       "id": "cmp_farmer",
       "group": "components",
       "label": "FarmerPortal",
@@ -435,7 +459,7 @@
     {
       "id": "ep_farmer",
       "group": "endpoints",
-      "label": "/admin/lots, /admin/lots/{id}/plan, /admin/farmer/settings",
+      "label": "/admin/farmer/lots, /admin/farmer/lots/{id}/plan, /admin/farmer/settings",
       "path": "backend/app/api/farmer.py"
     },
     {
@@ -877,6 +901,36 @@
       "x_esp32",
       "ep_device",
       "Wi-Fi HTTP (device key)"
+    ],
+    [
+      "page_admin",
+      "cmp_lots",
+      "renders"
+    ],
+    [
+      "cmp_lots",
+      "fe_api",
+      "uses"
+    ],
+    [
+      "fe_api",
+      "ep_lots",
+      "HTTP"
+    ],
+    [
+      "ep_lots",
+      "svc_lots",
+      "calls"
+    ],
+    [
+      "svc_lots",
+      "svc_planner",
+      "calls"
+    ],
+    [
+      "svc_lots",
+      "d_lots",
+      "reads/writes"
     ],
     [
       "page_admin",
