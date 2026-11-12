@@ -12,12 +12,15 @@ The repository contains:
 - Local data processing.
 - A genuinely trained mandi-price forecasting model.
 
-This is NOT the farmer mobile application.
+The web app is NOT the farmer application. `android/` holds the Raithanna farmer advisory app
+(ADR-030), which only reads admin-created lots.
 
 ## 2. Non-negotiable restrictions
 
-- Do not create a farmer application. The admin-only farmer lot register of ADR-026 is the only exception.
-- Do not introduce authentication beyond the single admin password and device key of ADR-024.
+- Do not create a farmer application. The exceptions are the admin-only farmer lot register of ADR-026 and the
+  read-only Raithanna Android advisory app of ADR-030 (farmers never create or edit lots).
+- Do not introduce authentication beyond the single admin password and device key of ADR-024 and the
+  per-lot farmer token of ADR-030.
 - Do not introduce a database.
 - Do not add PostgreSQL, MongoDB or Redis.
 - Do not generate synthetic market data.
@@ -28,6 +31,8 @@ This is NOT the farmer mobile application.
   GODL-licensed Kaggle mirror of AGMARKNET in ADR-022, and it must always be labelled as such.
 - Do not present cached data as live data.
 - Do not expose API keys to the frontend.
+- Do not let AI compute money, prices or forecasts; Bedrock only rewords backend figures (ADR-030).
+- Do not add microphone, speech recognition or full-duplex voice to the Android app (ADR-030).
 - Do not claim untested cooling performance. PCM backup hours are a labelled physics estimate from entered values (ADR-025).
 
 ## 3. Data integrity
@@ -216,6 +221,7 @@ After each task report:
 - backend/app/services/   — read-only queries over processed files.
 - backend/scripts/        — explicit CLIs: fetch, validate, preprocess, train, evaluate.
 - frontend/src/components/ui — design primitives; tokens in src/styles/globals.css (ADR-016).
+- android/ — Raithanna app; backend side in backend/app/api/mobile.py and services/{mobile_service,advisory_script,narration,tts}.py.
 - Tests may build labelled test inputs in temp dirs only (ADR-017); never under backend/data or backend/models.
 - Knowledge graph: edit docs/knowledge-graph.json, run `python docs/generate_graph.py`,
   and `python docs/generate_graph.py --check` must pass.

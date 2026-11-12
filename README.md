@@ -168,6 +168,21 @@ Optionally pick a storage option to also compare the 7/14/30-day forecasts. **Be
 for every mandi, net receipts after transport (km × rate × quantity), fees and storage, and highlights
 the mandi and selling time that pays the most. Mandis without enough history show the reason, not a number.
 
+## Raithanna Android app (ADR-030)
+
+`android/` is a native Kotlin + Jetpack Compose app in which Raithanna (రైతన్న) calls the farmer, always
+addressed as Babai (బాబాయ్), and speaks a Telugu or English report built from the farmer's admin-created lot:
+prices, each mandi's distance and transport cost, net money, and selling now versus storing. The farmer answers
+with on-screen 1 / 2 buttons (no microphone). All figures come from the backend; optional AWS Bedrock only
+rewords them (number-checked), and optional Azure Speech produces the audio on the server.
+
+```bash
+# backend/.env: MOBILE_LINK_SECRET (required), BEDROCK_MODEL_ID / AZURE_SPEECH_KEY / AZURE_SPEECH_REGION (optional)
+cd android && ./gradlew test --console=plain && ./gradlew assembleDebug
+```
+
+Setup, emulator/phone networking, AWS and Azure configuration and limitations: [android/README.md](android/README.md).
+
 ## Validation and processing
 
 ```bash
@@ -193,11 +208,12 @@ has enough history, training stops with `INSUFFICIENT DATA` and creates no model
 ## Testing
 
 ```bash
-cd backend && .venv/Scripts/python -m pytest    # 59 tests: provider errors, pagination, CSV import, validation, leakage, splits, API
+cd backend && .venv/Scripts/python -m pytest    # 69 tests: provider errors, pagination, CSV import, validation, leakage, splits, API
 cd frontend && npm test                          # 18 tests: states, source labels, no fake values, all pages render
 cd frontend && npm run typecheck && npm run build
 cd frontend && npm run test:e2e                  # Playwright + axe at desktop/tablet/mobile (first time: npx playwright install chromium)
 python docs/generate_graph.py --check            # knowledge graph matches the code
+cd android && ./gradlew test --console=plain      # 47 Android unit + Compose UI tests
 ```
 
 ## Troubleshooting

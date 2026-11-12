@@ -833,3 +833,63 @@ table carries per-row source_kind, so Kaggle-mirror labelling (ADR-022) survives
 
 Related modules:
 .gitignore, backend/data/processed/, backend/data/metadata/, backend/models/
+
+---
+
+## ADR-030: Raithanna native Android advisory app (partly supersedes the "no farmer application" and authentication rules)
+
+Date: 2026-11-12
+Status: Accepted
+
+Context:
+The owner asked for a native Android app in `android/`: an audio-first Telugu farmer advisory called
+Raithanna (రైతన్న) that reads the admin's farmer lots (ADR-026), compares mandis after transport, compares
+selling now with storing, and speaks the result. AGENTS.md said "do not create a farmer application" and
+allowed no authentication beyond ADR-024; the owner's request overrides both for this read-only app.
+
+Decision:
+- Native Android: Kotlin, Jetpack Compose, Material 3, MVVM/clean architecture, Hilt, Retrofit + OkHttp +
+  Kotlinx Serialization, DataStore, Media3 ExoPlayer, WorkManager. Namespace `in.kisancoldlink.app`, minSdk 26,
+  JVM 21; toolchain versions follow the reference project (enftaurus/android).
+- Admin-created lots are the only source of truth. Farmers cannot create, edit or delete lots. A lot's crop is
+  always the lot's commodity (never a hardcoded crop). The lot's phone number is now required (ADR-026 form).
+- Identity: the assistant is always Raithanna; the farmer is always addressed as Babai (బాబాయ్), never by name.
+- Button-controlled audio only: no microphone permission, no recording, no speech recognition, no full-duplex
+  or streaming voice, no telephony. The call is an in-app screen with large 1 / 2 buttons. Options activate
+  only after the greeting audio finishes. An explicit state machine (IDLE … CALL_COMPLETED, plus ERROR)
+  ignores duplicate or early presses.
+- Demo identification (not OTP): `POST /mobile/identify` needs the farmer name AND mobile number of an admin
+  lot; the reply carries one token per lot, HMAC-SHA256(MOBILE_LINK_SECRET, lot id + phone). Every lot,
+  market, advisory and audio request must present it (`X-Farmer-Token`), so a phone number alone opens nothing.
+  Mismatches return one "not registered" message. The existing per-IP rate limit (ADR-021) slows guessing.
+  Empty `MOBILE_LINK_SECRET` disables the mobile endpoints.
+- Deterministic money: all prices, distances, transport, commission, storage cost, losses, gross/net revenue
+  and forecasts come from lot_service.compare (storage planner + trained models, ADR-023/026). Missing
+  commission and loading/unloading are said to be "not recorded", never treated as zero silently. Storage
+  periods are limited by the planner's shelf-life rules and evaluated horizons. A storage gain under 2% of
+  selling now is called out as smaller than forecast error (stated rule).
+- AWS Bedrock (boto3 `converse`) only rewords the finished template. Verified in us-east-1 on 2026-11-12:
+  Amazon Nova Micro/Lite mistranslated crop words in Telugu ("paddy" -> a sweet dish), Claude Haiku 5.5
+  (`us.anthropic.claude-haiku-5-5`) did not, so it is the configured default. Output must be JSON
+  {"script"} (Pydantic) and is rejected for the template if any number changes, is added or dropped, the
+  farmer's name appears, Babai is missing, or it invites a spoken reply. Results are cached by template hash.
+  Without Bedrock the deterministic template is used.
+- Azure AI Speech REST (te-IN-MohanNeural, en-IN-PrabhatNeural by default) behind a replaceable
+  TextToSpeechProvider, server-side only. MP3s are cached by hash of lot, stage, language, voice, script and
+  version. If TTS fails or is not configured the app shows the text and offers retry.
+- Caches: `backend/data/advisory/` (git-ignored). The app caches the last lot view and last report (text +
+  audio) and labels saved data with its time; old prices are never shown as live.
+
+Alternatives:
+OTP or accounts (needs SMS provider or database, ADR-002); on-device TTS (spec requires server-side voices);
+letting the model compute figures (forbidden); unrestricted phone lookup (exposes other farmers' records).
+
+Consequences:
+Identification is not verification: anyone who knows a farmer's registered name and number can open that
+farmer's lot. Plain HTTP on the dev network, as ADR-024; use HTTPS (release builds refuse cleartext) before
+real use. Azure voices were not exercised here (no key configured). Backend reasons and assumptions shown in
+the app are English. Distances remain admin-entered (ADR-026).
+
+Related modules:
+android/, backend/app/api/mobile.py, backend/app/services/{mobile_service,advisory_script,narration,tts}.py,
+backend/app/services/lot_service.py, backend/app/core/config.py, backend/tests/test_mobile.py, AGENTS.md

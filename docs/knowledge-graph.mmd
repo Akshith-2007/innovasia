@@ -29,6 +29,15 @@ flowchart LR
     fe_hooks["useMarketData (TanStack Query)"]
     fe_api["api client"]
   end
+  subgraph android["Android app (Raithanna)"]
+    and_app["Raithanna Android app (Compose, Hilt)"]
+    and_auth["Onboarding + farmer identification"]
+    and_screens["Home / Market / My Lot / Analysis / Profile"]
+    and_call["Raithanna call (state machine + ViewModel)"]
+    and_audio["Media3 ExoPlayer audio"]
+    and_data["Retrofit KisanApi + repositories + DataStore"]
+    and_reminder["Daily reminder (WorkManager)"]
+  end
   subgraph endpoints["API endpoints (/api/v1)"]
     ep_health["GET /health"]
     ep_markets["GET /markets/*"]
@@ -41,6 +50,7 @@ flowchart LR
     ep_device["POST /device/telemetry, GET /device/command"]
     ep_admin["GET /admin/device|telemetry, PUT /admin/device/control"]
     ep_lots["GET/POST /admin/lots, DELETE /admin/lots/{id}, GET /admin/lots/{id}/compare"]
+    ep_mobile["POST /mobile/identify, GET /mobile/lots/{id}[/market|/audio/{key}], POST /mobile/lots/{id}/advisory"]
   end
   subgraph services["Backend services"]
     svc_market["market_service"]
@@ -50,6 +60,10 @@ flowchart LR
     svc_planner["storage_planner"]
     svc_device["device_service"]
     svc_lots["lot_service"]
+    svc_mobile["mobile_service (identify, per-lot token, lot view)"]
+    svc_script["advisory_script (deterministic Telugu/English template)"]
+    svc_narration["narration (Bedrock rewording + number check)"]
+    svc_tts["tts (Azure Speech provider + MP3 cache)"]
   end
   subgraph ml["ML modules"]
     ml_features["features"]
@@ -84,6 +98,7 @@ flowchart LR
     d_meta["sources.json + quality_report.json"]
     d_device["device/state.json + telemetry/*.csv"]
     d_lots["data/lots/lots.json"]
+    d_advisory["data/advisory/{scripts,audio}"]
   end
   subgraph models["Model artifacts"]
     m_artifact["price_model/<version>/"]
@@ -96,6 +111,8 @@ flowchart LR
     x_playwright["Playwright, axe-core (dev)"]
     x_kaggle["Kaggle mirror of AGMARKNET (GODL)"]
     x_esp32["ESP32 node (DHT11, DS18B20, pump)"]
+    ext_bedrock["AWS Bedrock (Claude Haiku 5.5)"]
+    ext_azure["Azure AI Speech (te-IN / en-IN neural voices)"]
   end
   page_home -->|"renders"| cmp_hero
   page_home -->|"renders"| cmp_diagrams
@@ -187,3 +204,22 @@ flowchart LR
   ep_lots -->|"calls"| svc_lots
   svc_lots -->|"calls"| svc_planner
   svc_lots -->|"reads/writes"| d_lots
+  and_app -->|"contains"| and_auth
+  and_app -->|"contains"| and_screens
+  and_app -->|"contains"| and_call
+  and_call -->|"plays"| and_audio
+  and_call -->|"uses"| and_data
+  and_screens -->|"uses"| and_data
+  and_auth -->|"uses"| and_data
+  and_reminder -->|"uses"| and_data
+  and_data -->|"HTTP"| ep_mobile
+  ep_mobile -->|"calls"| svc_mobile
+  svc_mobile -->|"calls"| svc_lots
+  svc_mobile -->|"calls"| svc_script
+  svc_mobile -->|"calls"| svc_narration
+  svc_mobile -->|"calls"| svc_tts
+  svc_mobile -->|"calls"| svc_market
+  svc_narration -->|"boto3"| ext_bedrock
+  svc_tts -->|"REST"| ext_azure
+  svc_narration -->|"reads/writes"| d_advisory
+  svc_tts -->|"reads/writes"| d_advisory

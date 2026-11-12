@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Raithanna: white turban with amber band, face and moustache. Original artwork. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+    <path android:fillColor="#C98B5A" android:pathData="M37,58a17,19 0,1 0,34 0a17,19 0,1 0,-34 0z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M33,46 C33,30 75,30 75,46 L75,49 C64,44 44,44 33,49 Z" />
+    <path android:fillColor="#E8A33A" android:pathData="M36,47 C46,43 62,43 72,47 L72,50 C62,46 46,46 36,50 Z" />
+    <path android:fillColor="#3B2A1E" android:pathData="M46,65 C50,62 53,64 54,65 C55,64 58,62 62,65 C58,68 55,66 54,66 C53,66 50,68 46,65 Z" />
+    <path android:fillColor="#3B2A1E" android:pathData="M45,56a2,2 0,1 0,4 0a2,2 0,1 0,-4 0z" />
+    <path android:fillColor="#3B2A1E" android:pathData="M59,56a2,2 0,1 0,4 0a2,2 0,1 0,-4 0z" />
+</vector>

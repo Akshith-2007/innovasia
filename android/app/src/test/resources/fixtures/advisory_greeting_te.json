@@ -1,0 +1,17 @@
+{
+ "data": {
+  "stage": "greeting",
+  "language": "te",
+  "script": "బాబాయ్... శుభోదయం! నేను రైతన్నను మాట్లాడుతున్నాను. బాబాయ్, మీ వరి పంట ధరలు తెలుసుకోవాలనుకుంటున్నారా? తెలుసుకోవాలంటే ఒకటి నొక్కండి. వద్దనుకుంటే రెండు నొక్కండి.",
+  "crop": "వరి",
+  "narration": "fixed",
+  "narration_note": "fixed wording",
+  "audio": null,
+  "tts_error": {
+   "code": "not_configured",
+   "message": "Azure Speech is not configured (AZURE_SPEECH_KEY, AZURE_SPEECH_REGION)."
+  }
+ },
+ "source": null,
+ "meta": {}
+}

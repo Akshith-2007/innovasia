@@ -6,6 +6,7 @@
     "pages": "Frontend pages",
     "components": "Frontend components",
     "frontend_lib": "Frontend services & hooks",
+    "android": "Android app (Raithanna)",
     "endpoints": "API endpoints (/api/v1)",
     "services": "Backend services",
     "ml": "ML modules",
@@ -449,6 +450,94 @@
       "group": "data",
       "label": "data/lots/lots.json",
       "path": "backend/data"
+    },
+    {
+      "id": "and_app",
+      "group": "android",
+      "label": "Raithanna Android app (Compose, Hilt)",
+      "path": "android/app/build.gradle.kts"
+    },
+    {
+      "id": "and_auth",
+      "group": "android",
+      "label": "Onboarding + farmer identification",
+      "path": "android/app/src/main/java/in/kisancoldlink/app/features/authentication/Authentication.kt"
+    },
+    {
+      "id": "and_screens",
+      "group": "android",
+      "label": "Home / Market / My Lot / Analysis / Profile",
+      "path": "android/app/src/main/java/in/kisancoldlink/app/features/home/HomeScreen.kt"
+    },
+    {
+      "id": "and_call",
+      "group": "android",
+      "label": "Raithanna call (state machine + ViewModel)",
+      "path": "android/app/src/main/java/in/kisancoldlink/app/features/call/CallViewModel.kt"
+    },
+    {
+      "id": "and_audio",
+      "group": "android",
+      "label": "Media3 ExoPlayer audio",
+      "path": "android/app/src/main/java/in/kisancoldlink/app/audio/ExoAudioPlayer.kt"
+    },
+    {
+      "id": "and_data",
+      "group": "android",
+      "label": "Retrofit KisanApi + repositories + DataStore",
+      "path": "android/app/src/main/java/in/kisancoldlink/app/data/repository/RepositoriesImpl.kt"
+    },
+    {
+      "id": "and_reminder",
+      "group": "android",
+      "label": "Daily reminder (WorkManager)",
+      "path": "android/app/src/main/java/in/kisancoldlink/app/notifications/Reminders.kt"
+    },
+    {
+      "id": "ep_mobile",
+      "group": "endpoints",
+      "label": "POST /mobile/identify, GET /mobile/lots/{id}[/market|/audio/{key}], POST /mobile/lots/{id}/advisory",
+      "path": "backend/app/api/mobile.py"
+    },
+    {
+      "id": "svc_mobile",
+      "group": "services",
+      "label": "mobile_service (identify, per-lot token, lot view)",
+      "path": "backend/app/services/mobile_service.py"
+    },
+    {
+      "id": "svc_script",
+      "group": "services",
+      "label": "advisory_script (deterministic Telugu/English template)",
+      "path": "backend/app/services/advisory_script.py"
+    },
+    {
+      "id": "svc_narration",
+      "group": "services",
+      "label": "narration (Bedrock rewording + number check)",
+      "path": "backend/app/services/narration.py"
+    },
+    {
+      "id": "svc_tts",
+      "group": "services",
+      "label": "tts (Azure Speech provider + MP3 cache)",
+      "path": "backend/app/services/tts.py"
+    },
+    {
+      "id": "d_advisory",
+      "group": "data",
+      "label": "data/advisory/{scripts,audio}",
+      "path": "backend/data"
+    },
+    {
+      "id": "ext_bedrock",
+      "group": "external",
+      "label": "AWS Bedrock (Claude Haiku 5.5)"
+    },
+    {
+      "id": "ext_azure",
+      "group": "external",
+      "label": "Azure AI Speech (te-IN / en-IN neural voices)"
     }
   ],
   "edges": [
@@ -900,6 +989,101 @@
     [
       "svc_lots",
       "d_lots",
+      "reads/writes"
+    ],
+    [
+      "and_app",
+      "and_auth",
+      "contains"
+    ],
+    [
+      "and_app",
+      "and_screens",
+      "contains"
+    ],
+    [
+      "and_app",
+      "and_call",
+      "contains"
+    ],
+    [
+      "and_call",
+      "and_audio",
+      "plays"
+    ],
+    [
+      "and_call",
+      "and_data",
+      "uses"
+    ],
+    [
+      "and_screens",
+      "and_data",
+      "uses"
+    ],
+    [
+      "and_auth",
+      "and_data",
+      "uses"
+    ],
+    [
+      "and_reminder",
+      "and_data",
+      "uses"
+    ],
+    [
+      "and_data",
+      "ep_mobile",
+      "HTTP"
+    ],
+    [
+      "ep_mobile",
+      "svc_mobile",
+      "calls"
+    ],
+    [
+      "svc_mobile",
+      "svc_lots",
+      "calls"
+    ],
+    [
+      "svc_mobile",
+      "svc_script",
+      "calls"
+    ],
+    [
+      "svc_mobile",
+      "svc_narration",
+      "calls"
+    ],
+    [
+      "svc_mobile",
+      "svc_tts",
+      "calls"
+    ],
+    [
+      "svc_mobile",
+      "svc_market",
+      "calls"
+    ],
+    [
+      "svc_narration",
+      "ext_bedrock",
+      "boto3"
+    ],
+    [
+      "svc_tts",
+      "ext_azure",
+      "REST"
+    ],
+    [
+      "svc_narration",
+      "d_advisory",
+      "reads/writes"
+    ],
+    [
+      "svc_tts",
+      "d_advisory",
       "reads/writes"
     ]
   ]

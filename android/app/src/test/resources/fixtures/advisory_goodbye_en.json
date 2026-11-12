@@ -1,0 +1,17 @@
+{
+ "data": {
+  "stage": "goodbye",
+  "language": "en",
+  "script": "Alright Babai, thank you! Have a wonderful day. Wishing you a great price for your produce. See you again!",
+  "crop": "Paddy",
+  "narration": "fixed",
+  "narration_note": "fixed wording",
+  "audio": null,
+  "tts_error": {
+   "code": "not_configured",
+   "message": "Azure Speech is not configured (AZURE_SPEECH_KEY, AZURE_SPEECH_REGION)."
+  }
+ },
+ "source": null,
+ "meta": {}
+}

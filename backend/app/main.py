@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import agriculture, commodities, decision, device, health, lots, markets, predictions, prices, sources
+from app.api import agriculture, commodities, decision, device, health, lots, markets, mobile, predictions, prices, sources
 from app.core.config import get_settings
 from app.core.exceptions import AppError, app_error_handler
 from app.core.logging import configure_logging
@@ -36,7 +36,7 @@ async def security_headers(request: Request, call_next):
 API = "/api/v1"
 for r in (
     health.router, markets.router, commodities.router, prices.router,
-    agriculture.router, predictions.router, sources.router, decision.router, device.router, lots.router,
+    agriculture.router, predictions.router, sources.router, decision.router, device.router, lots.router, mobile.router,
 ):
     app.include_router(r, prefix=API)
 

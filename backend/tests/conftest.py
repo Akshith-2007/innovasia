@@ -22,6 +22,11 @@ def isolated_settings(tmp_path, monkeypatch):
     monkeypatch.setenv("DATA_GOV_API_KEY", "")
     monkeypatch.setenv("ADMIN_PASSWORD", "")
     monkeypatch.setenv("DEVICE_KEY", "")
+    # Never reach real Bedrock / Azure from tests (backend/.env may configure them).
+    monkeypatch.setenv("BEDROCK_MODEL_ID", "")
+    monkeypatch.setenv("AZURE_SPEECH_KEY", "")
+    monkeypatch.setenv("AZURE_SPEECH_REGION", "")
+    monkeypatch.setenv("MOBILE_LINK_SECRET", "")
     (tmp_path / "models").mkdir()
     get_settings.cache_clear()
     model_loader._load.cache_clear()

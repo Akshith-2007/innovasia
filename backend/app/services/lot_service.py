@@ -108,6 +108,12 @@ def compare(lot_id: str) -> dict[str, Any]:
             row.update({
                 "available": True, "latest_observation": plan["latest_observation"], "options": opts,
                 "best": max(opts, key=lambda o: o["net_revenue"]),
+                "unavailable_horizons": [{"days": x["days"], "reason": x["reason"]}
+                                         for x in plan["scenarios"] if not x.get("possible")],
+                "storage_option": {k: plan["storage_option"].get(k) for k in
+                                   ("id", "name", "used_cost_per_quintal_per_month", "used_loss_pct_per_30_days",
+                                    "used_max_days")},
+                "series": plan["series"],
                 "model_version": plan["model_version"],
             })
         rows.append(row)

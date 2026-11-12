@@ -26,3 +26,5 @@ frontend/test-results/
 frontend/playwright-report/
 # farmer lots hold names/phones (ADR-026)
 backend/data/lots/
+# Raithanna advisory scripts and audio contain lot figures (ADR-030)
+backend/data/advisory/

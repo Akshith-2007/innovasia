@@ -1,0 +1,17 @@
+{
+ "data": {
+  "stage": "goodbye",
+  "language": "te",
+  "script": "సరే బాబాయ్! ధన్యవాదాలు. మీ రోజు మంచిగా గడవాలని కోరుకుంటున్నాను. మీ పంటకు మంచి ధర రావాలని ఆశిస్తున్నాను. మళ్లీ మాట్లాడుకుందాం బాబాయ్!",
+  "crop": "వరి",
+  "narration": "fixed",
+  "narration_note": "fixed wording",
+  "audio": null,
+  "tts_error": {
+   "code": "not_configured",
+   "message": "Azure Speech is not configured (AZURE_SPEECH_KEY, AZURE_SPEECH_REGION)."
+  }
+ },
+ "source": null,
+ "meta": {}
+}

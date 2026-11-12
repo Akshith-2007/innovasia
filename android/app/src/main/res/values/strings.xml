@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kisan Cold Link</string>
+    <string name="assistant_name">Raithanna</string>
+    <string name="brand_tagline">Preserving Produce. Powering Possibilities.</string>
+
+    <!-- Onboarding -->
+    <string name="welcome_heading">A good price for your crop. A good return for your hard work.</string>
+    <string name="welcome_body">Raithanna tells you today\'s mandi prices, transport costs and where you keep the most money.</string>
+    <string name="choose_language">Choose your language</string>
+    <string name="language_telugu">తెలుగు</string>
+    <string name="language_english">English</string>
+    <string name="continue_label">Continue</string>
+
+    <!-- Identification -->
+    <string name="identify_title">Tell us who you are, Babai</string>
+    <string name="identify_body">Enter the name and mobile number the Kisan Cold Link team registered for you.</string>
+    <string name="field_name">Farmer name</string>
+    <string name="field_phone">Mobile number</string>
+    <string name="identify_submit">Find my crop lot</string>
+    <string name="identify_demo_note">Demo sign-in: the number is not verified with an OTP.</string>
+    <string name="error_name_required">Please enter your name.</string>
+    <string name="error_phone_invalid">Please enter a 10-digit mobile number.</string>
+    <string name="not_registered">Babai, your details are not registered yet. Please contact our team.</string>
+    <string name="choose_lot_title">Which crop lot?</string>
+    <string name="choose_lot_body">The team registered more than one lot for you. Choose one.</string>
+    <string name="confirm_title">Is this you, Babai?</string>
+    <string name="confirm_yes">Yes, this is my lot</string>
+    <string name="confirm_no">No, go back</string>
+    <string name="lot_line">%1$s · %2$s quintals</string>
+    <string name="lot_village">Village: %1$s</string>
+    <string name="lot_mandis">%1$d nearby mandis</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_market">Market</string>
+    <string name="nav_lot">My Lot</string>
+    <string name="nav_raithanna">Raithanna</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Home -->
+    <string name="greeting_babai">Namaskaram, Babai!</string>
+    <string name="my_crop_lot">My crop lot</string>
+    <string name="quantity_value">%1$s quintals (%2$s kg)</string>
+    <string name="storage_label">Storage</string>
+    <string name="storage_none">Sell now (no storage on record)</string>
+    <string name="lot_status">Status</string>
+    <string name="lot_status_registered">Registered by the Kisan Cold Link team</string>
+    <string name="todays_market">Today\'s market</string>
+    <string name="modal_price">Modal price</string>
+    <string name="min_price">Minimum</string>
+    <string name="max_price">Maximum</string>
+    <string name="per_quintal">₹%1$s / quintal</string>
+    <string name="per_kg">₹%1$s / kg</string>
+    <string name="observed_on">Recorded on %1$s</string>
+    <string name="source_stored">Stored official data, not today\'s live price</string>
+    <string name="source_live">Live from data.gov.in</string>
+    <string name="source_mirror">Includes the Kaggle mirror of AGMARKNET data</string>
+    <string name="recommendation">Raithanna\'s suggestion</string>
+    <string name="rec_sell_now">Sell now at %1$s</string>
+    <string name="rec_store">Store %1$d days, then sell at %2$s</string>
+    <string name="rec_net">About ₹%1$s left after all costs</string>
+    <string name="rec_loss">Loss of about ₹%1$s even at the best option</string>
+    <string name="rec_none">Not enough price data for a reliable suggestion.</string>
+    <string name="rec_decision">The final decision is yours.</string>
+    <string name="talk_to_raithanna">Talk to Raithanna</string>
+    <string name="cached_notice">Saved data from %1$s. Could not reach the server.</string>
+    <string name="last_updated">Updated %1$s</string>
+
+    <!-- Market / mandi / storage -->
+    <string name="market_title">Mandi prices</string>
+    <string name="mandi_comparison">Where you keep the most money</string>
+    <string name="distance_km">%1$s km</string>
+    <string name="gross_value">Sale value</string>
+    <string name="transport">Transport</string>
+    <string name="commission">Commission</string>
+    <string name="commission_missing">Not recorded</string>
+    <string name="loading_unloading">Loading / unloading</string>
+    <string name="not_recorded">Not recorded, not included</string>
+    <string name="storage_cost">Storage</string>
+    <string name="net_earnings">You keep</string>
+    <string name="net_loss">Loss</string>
+    <string name="best_badge">Best</string>
+    <string name="no_figure">No figure: %1$s</string>
+    <string name="check_live">Check today\'s live price</string>
+    <string name="live_none">No live price published today for this mandi.</string>
+    <string name="storage_title">Sell now or store?</string>
+    <string name="sell_now">Sell now</string>
+    <string name="store_days">Store %1$d days</string>
+    <string name="forecast_price">Forecast price</string>
+    <string name="forecast_note">Forecast, not a guarantee. Tested error about %1$s%%.</string>
+    <string name="sellable">Left after losses: %1$s q</string>
+    <string name="horizon_unavailable">%1$d days: %2$s</string>
+    <string name="transport_rate">Transport rate: ₹%1$s per quintal per km</string>
+
+    <!-- Call -->
+    <string name="call_kisan">Kisan Cold Link</string>
+    <string name="call_connecting">Connecting…</string>
+    <string name="call_preparing">Raithanna is preparing…</string>
+    <string name="call_speaking">Raithanna is speaking</string>
+    <string name="call_paused">Paused</string>
+    <string name="call_choose">Press a button</string>
+    <string name="call_report_done">Report finished</string>
+    <string name="call_ended">Call ended</string>
+    <string name="option1_number">1</string>
+    <string name="option1_label">Yes, tell me the prices</string>
+    <string name="option2_number">2</string>
+    <string name="option2_label">No, later</string>
+    <string name="end_call">End call</string>
+    <string name="resume">Resume</string>
+    <string name="pause">Pause</string>
+    <string name="replay_report">Replay report</string>
+    <string name="view_analysis">View detailed analysis</string>
+    <string name="return_home">Return home</string>
+    <string name="retry">Try again</string>
+    <string name="retry_audio">Try audio again</string>
+    <string name="audio_unavailable">Audio is not available right now (%1$s). You can read Raithanna\'s words below.</string>
+    <string name="show_text">What Raithanna is saying</string>
+    <string name="analysis_title">Detailed analysis</string>
+    <string name="narration_ai">Worded with AI from the calculated figures</string>
+    <string name="narration_template">Standard wording from the calculated figures</string>
+
+    <!-- Profile / reminders -->
+    <string name="profile_title">Profile</string>
+    <string name="profile_lot">Selected lot</string>
+    <string name="language">Language</string>
+    <string name="reminders">Daily price reminder</string>
+    <string name="reminders_body">Raithanna reminds you once a day, only when the server has your lot.</string>
+    <string name="reminder_time">Reminder time: %1$s</string>
+    <string name="change_time">Change time</string>
+    <string name="sign_out">Change farmer / sign out</string>
+    <string name="notification_channel">Daily price reminders</string>
+    <string name="notification_title">Raithanna</string>
+    <string name="notification_text">Babai, would you like to hear today\'s prices for your crop?</string>
+
+    <!-- States -->
+    <string name="loading">Loading…</string>
+    <string name="error_network">Can\'t reach the Kisan Cold Link server. Check the internet and try again.</string>
+    <string name="error_generic">Something went wrong: %1$s</string>
+    <string name="error_session">This lot is no longer available. Please sign in again.</string>
+
+    <!-- Storage options (ids from backend storage_planner.CATALOG) -->
+    <string name="storage_sell_now">Sell now</string>
+    <string name="storage_home_ambient">Home / shed storage (no cooling)</string>
+    <string name="storage_zecc">Zero Energy Cool Chamber</string>
+    <string name="storage_onion_ventilated">Ventilated onion storage</string>
+    <string name="storage_cold_storage">Rented cold storage</string>
+    <string name="storage_warehouse">Warehouse / godown</string>
+    <string name="raithanna_intro">Raithanna calls you like a friend from the village and tells you, in simple words, what your crop can fetch today.</string>
+    <string name="assumptions">How these figures are calculated</string>
+    <string name="saved_report">Last report Raithanna gave you</string>
+    <string name="no_saved_report">No report yet. Talk to Raithanna to hear one.</string>
+    <string name="refresh">Refresh</string>
+    <string name="quantity_label">Quantity</string>
+    <string name="village_label">Village</string>
+    <string name="per_kg_label">Per kilo</string>
+</resources>

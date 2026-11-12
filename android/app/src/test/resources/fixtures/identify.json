@@ -1,0 +1,23 @@
+{
+ "data": [
+  {
+   "lot_id": "4aec5dae1618",
+   "farmer_name": "E2E Test (sample inputs)",
+   "village": "Sample",
+   "state": "Telangana",
+   "district": "Nalgonda",
+   "commodity": "Paddy (Dhan)(Common)",
+   "crop_te": "వరి",
+   "crop_en": "Paddy",
+   "quantity_quintals": 50,
+   "storage_option": "warehouse",
+   "mandi_count": 3,
+   "created_at": "2026-11-12T17:28:17.188339+00:00",
+   "token": "fixture-token"
+  }
+ ],
+ "source": null,
+ "meta": {
+  "verification": "none (demo identification, number not verified)"
+ }
+}

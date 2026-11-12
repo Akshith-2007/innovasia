@@ -1,0 +1,525 @@
+{
+ "data": {
+  "lot": {
+   "farmer_name": "E2E Test (sample inputs)",
+   "village": "Sample",
+   "state": "Telangana",
+   "district": "Nalgonda",
+   "commodity": "Paddy (Dhan)(Common)",
+   "quantity_quintals": 50,
+   "total_cost": 90000,
+   "transport_rate_per_quintal_km": 2,
+   "market_fee_pct": 1,
+   "storage_option": "warehouse",
+   "loss_pct_per_30_days": 0.5,
+   "mandis": [
+    {
+     "market": "Nakrekal",
+     "district": "Nalgonda",
+     "distance_km": 15
+    },
+    {
+     "market": "Neredcherla",
+     "district": "Nalgonda",
+     "distance_km": 60
+    },
+    {
+     "market": "Choutuppal",
+     "district": "Nalgonda",
+     "distance_km": 50
+    }
+   ],
+   "id": "4aec5dae1618",
+   "created_at": "2026-11-12T17:28:17.188339+00:00"
+  },
+  "summary": {
+   "lot_id": "4aec5dae1618",
+   "farmer_name": "E2E Test (sample inputs)",
+   "village": "Sample",
+   "state": "Telangana",
+   "district": "Nalgonda",
+   "commodity": "Paddy (Dhan)(Common)",
+   "crop_te": "వరి",
+   "crop_en": "Paddy",
+   "quantity_quintals": 50,
+   "storage_option": "warehouse",
+   "mandi_count": 3,
+   "created_at": "2026-11-12T17:28:17.188339+00:00"
+  },
+  "comparison": {
+   "lot": {
+    "farmer_name": "E2E Test (sample inputs)",
+    "phone": "9000000000",
+    "village": "Sample",
+    "state": "Telangana",
+    "district": "Nalgonda",
+    "commodity": "Paddy (Dhan)(Common)",
+    "quantity_quintals": 50,
+    "total_cost": 90000,
+    "transport_rate_per_quintal_km": 2,
+    "market_fee_pct": 1,
+    "storage_option": "warehouse",
+    "loss_pct_per_30_days": 0.5,
+    "mandis": [
+     {
+      "market": "Nakrekal",
+      "district": "Nalgonda",
+      "distance_km": 15
+     },
+     {
+      "market": "Neredcherla",
+      "district": "Nalgonda",
+      "distance_km": 60
+     },
+     {
+      "market": "Choutuppal",
+      "district": "Nalgonda",
+      "distance_km": 50
+     }
+    ],
+    "id": "4aec5dae1618",
+    "created_at": "2026-11-12T17:28:17.188339+00:00"
+   },
+   "mandis": [
+    {
+     "market": "Nakrekal",
+     "district": "Nalgonda",
+     "distance_km": 15,
+     "transport_cost_per_quintal": 30,
+     "available": true,
+     "latest_observation": {
+      "date": "2025-10-17",
+      "modal_price": 2389.0
+     },
+     "options": [
+      {
+       "days": 0,
+       "price_per_quintal": 2389.0,
+       "sellable_quintals": 50.0,
+       "storage_cost": 0.0,
+       "transport_cost": 1500,
+       "market_fee": 1194.5,
+       "net_revenue": 116755.5,
+       "net_revenue_low": null,
+       "net_revenue_high": null,
+       "profit": 26755.5,
+       "break_even_price": 1848.48,
+       "label": "Sell now",
+       "source": "latest observation"
+      },
+      {
+       "days": 7,
+       "price_per_quintal": 2388.17,
+       "sellable_quintals": 49.942,
+       "storage_cost": 118.3,
+       "transport_cost": 1500,
+       "market_fee": 1192.69,
+       "net_revenue": 116458.2,
+       "net_revenue_low": 92884.19,
+       "net_revenue_high": 143730.12,
+       "profit": 26458.2,
+       "break_even_price": 1853.04,
+       "possible": true,
+       "vs_sell_now": -297.3,
+       "forecast_beats_naive_on_test": true,
+       "forecast_test_mape": 14.334820604949766,
+       "storage_life_unknown": false,
+       "label": "Store 7 days, then sell"
+      },
+      {
+       "days": 14,
+       "price_per_quintal": 2402.03,
+       "sellable_quintals": 49.883,
+       "storage_cost": 236.6,
+       "transport_cost": 1500,
+       "market_fee": 1198.21,
+       "net_revenue": 116886.45,
+       "net_revenue_low": 88941.74,
+       "net_revenue_high": 148446.9,
+       "profit": 26886.45,
+       "break_even_price": 1857.6,
+       "possible": true,
+       "vs_sell_now": 130.95,
+       "forecast_beats_naive_on_test": true,
+       "forecast_test_mape": 17.240150806056647,
+       "storage_life_unknown": false,
+       "label": "Store 14 days, then sell"
+      },
+      {
+       "days": 30,
+       "price_per_quintal": 2398.24,
+       "sellable_quintals": 49.75,
+       "storage_cost": 507.0,
+       "transport_cost": 1500,
+       "market_fee": 1193.12,
+       "net_revenue": 116112.32,
+       "net_revenue_low": 82140.57,
+       "net_revenue_high": 152674.7,
+       "profit": 26112.32,
+       "break_even_price": 1868.07,
+       "possible": true,
+       "vs_sell_now": -643.18,
+       "forecast_beats_naive_on_test": true,
+       "forecast_test_mape": 20.78189280473387,
+       "storage_life_unknown": false,
+       "label": "Store 30 days, then sell"
+      }
+     ],
+     "best": {
+      "days": 14,
+      "price_per_quintal": 2402.03,
+      "sellable_quintals": 49.883,
+      "storage_cost": 236.6,
+      "transport_cost": 1500,
+      "market_fee": 1198.21,
+      "net_revenue": 116886.45,
+      "net_revenue_low": 88941.74,
+      "net_revenue_high": 148446.9,
+      "profit": 26886.45,
+      "break_even_price": 1857.6,
+      "possible": true,
+      "vs_sell_now": 130.95,
+      "forecast_beats_naive_on_test": true,
+      "forecast_test_mape": 17.240150806056647,
+      "storage_life_unknown": false,
+      "label": "Store 14 days, then sell"
+     },
+     "unavailable_horizons": [],
+     "storage_option": {
+      "id": "warehouse",
+      "name": "Warehouse / godown (CWC or State Warehousing)",
+      "used_cost_per_quintal_per_month": 10.14,
+      "used_loss_pct_per_30_days": 0.5,
+      "used_max_days": 365
+     },
+     "series": {
+      "state": "Telangana",
+      "district": "Nalgonda",
+      "market": "Nakrekal",
+      "commodity": "Paddy (Dhan)(Common)",
+      "variety": "MTU-1010",
+      "grade": "FAQ"
+     },
+     "model_version": "20261112055602-bc3863ce"
+    },
+    {
+     "market": "Neredcherla",
+     "district": "Nalgonda",
+     "distance_km": 60,
+     "transport_cost_per_quintal": 120,
+     "available": true,
+     "latest_observation": {
+      "date": "2025-11-02",
+      "modal_price": 2380.0
+     },
+     "options": [
+      {
+       "days": 0,
+       "price_per_quintal": 2380.0,
+       "sellable_quintals": 50.0,
+       "storage_cost": 0.0,
+       "transport_cost": 6000,
+       "market_fee": 1190.0,
+       "net_revenue": 111810.0,
+       "net_revenue_low": null,
+       "net_revenue_high": null,
+       "profit": 21810.0,
+       "break_even_price": 1939.39,
+       "label": "Sell now",
+       "source": "latest observation"
+      },
+      {
+       "days": 7,
+       "price_per_quintal": 2364.96,
+       "sellable_quintals": 49.942,
+       "storage_cost": 118.3,
+       "transport_cost": 6000,
+       "market_fee": 1181.1,
+       "net_revenue": 110810.64,
+       "net_revenue_low": 87465.69,
+       "net_revenue_high": 137817.42,
+       "profit": 20810.64,
+       "break_even_price": 1944.05,
+       "possible": true,
+       "vs_sell_now": -999.36,
+       "forecast_beats_naive_on_test": true,
+       "forecast_test_mape": 14.334820604949766,
+       "storage_life_unknown": false,
+       "label": "Store 7 days, then sell"
+      },
+      {
+       "days": 14,
+       "price_per_quintal": 2364.14,
+       "sellable_quintals": 49.883,
+       "storage_cost": 236.6,
+       "transport_cost": 6000,
+       "market_fee": 1179.31,
+       "net_revenue": 110515.27,
+       "net_revenue_low": 83011.28,
+       "net_revenue_high": 141577.75,
+       "profit": 20515.27,
+       "break_even_price": 1948.72,
+       "possible": true,
+       "vs_sell_now": -1294.73,
+       "forecast_beats_naive_on_test": true,
+       "forecast_test_mape": 17.240150806056647,
+       "storage_life_unknown": false,
+       "label": "Store 14 days, then sell"
+      },
+      {
+       "days": 30,
+       "price_per_quintal": 2383.95,
+       "sellable_quintals": 49.75,
+       "storage_cost": 507.0,
+       "transport_cost": 6000,
+       "market_fee": 1186.02,
+       "net_revenue": 110908.5,
+       "net_revenue_low": 77139.04,
+       "net_revenue_high": 147252.77,
+       "profit": 20908.5,
+       "break_even_price": 1959.43,
+       "possible": true,
+       "vs_sell_now": -901.5,
+       "forecast_beats_naive_on_test": true,
+       "forecast_test_mape": 20.78189280473387,
+       "storage_life_unknown": false,
+       "label": "Store 30 days, then sell"
+      }
+     ],
+     "best": {
+      "days": 0,
+      "price_per_quintal": 2380.0,
+      "sellable_quintals": 50.0,
+      "storage_cost": 0.0,
+      "transport_cost": 6000,
+      "market_fee": 1190.0,
+      "net_revenue": 111810.0,
+      "net_revenue_low": null,
+      "net_revenue_high": null,
+      "profit": 21810.0,
+      "break_even_price": 1939.39,
+      "label": "Sell now",
+      "source": "latest observation"
+     },
+     "unavailable_horizons": [],
+     "storage_option": {
+      "id": "warehouse",
+      "name": "Warehouse / godown (CWC or State Warehousing)",
+      "used_cost_per_quintal_per_month": 10.14,
+      "used_loss_pct_per_30_days": 0.5,
+      "used_max_days": 365
+     },
+     "series": {
+      "state": "Telangana",
+      "district": "Nalgonda",
+      "market": "Neredcherla",
+      "commodity": "Paddy (Dhan)(Common)",
+      "variety": "B P T",
+      "grade": "FAQ"
+     },
+     "model_version": "20261112055602-bc3863ce"
+    },
+    {
+     "market": "Choutuppal",
+     "district": "Nalgonda",
+     "distance_km": 50,
+     "transport_cost_per_quintal": 100,
+     "available": true,
+     "latest_observation": {
+      "date": "2025-10-29",
+      "modal_price": 2100.0
+     },
+     "options": [
+      {
+       "days": 0,
+       "price_per_quintal": 2100.0,
+       "sellable_quintals": 50.0,
+       "storage_cost": 0.0,
+       "transport_cost": 5000,
+       "market_fee": 1050.0,
+       "net_revenue": 98950.0,
+       "net_revenue_low": null,
+       "net_revenue_high": null,
+       "profit": 8950.0,
+       "break_even_price": 1919.19,
+       "label": "Sell now",
+       "source": "latest observation"
+      },
+      {
+       "days": 7,
+       "price_per_quintal": 2125.83,
+       "sellable_quintals": 49.942,
+       "storage_cost": 118.3,
+       "transport_cost": 5000,
+       "market_fee": 1061.67,
+       "net_revenue": 99987.52,
+       "net_revenue_low": 79003.15,
+       "net_revenue_high": 124263.69,
+       "profit": 9987.52,
+       "break_even_price": 1923.83,
+       "possible": true,
+       "vs_sell_now": 1037.52,
+       "forecast_beats_naive_on_test": true,
+       "forecast_test_mape": 14.334820604949766,
+       "storage_life_unknown": false,
+       "label": "Store 7 days, then sell"
+      },
+      {
+       "days": 14,
+       "price_per_quintal": 2141.65,
+       "sellable_quintals": 49.883,
+       "storage_cost": 236.6,
+       "transport_cost": 5000,
+       "market_fee": 1068.33,
+       "net_revenue": 100527.71,
+       "net_revenue_low": 75612.38,
+       "net_revenue_high": 128667.3,
+       "profit": 10527.71,
+       "break_even_price": 1928.47,
+       "possible": true,
+       "vs_sell_now": 1577.71,
+       "forecast_beats_naive_on_test": true,
+       "forecast_test_mape": 17.240150806056647,
+       "storage_life_unknown": false,
+       "label": "Store 14 days, then sell"
+      },
+      {
+       "days": 30,
+       "price_per_quintal": 2158.32,
+       "sellable_quintals": 49.75,
+       "storage_cost": 507.0,
+       "transport_cost": 5000,
+       "market_fee": 1073.76,
+       "net_revenue": 100795.66,
+       "net_revenue_low": 70222.54,
+       "net_revenue_high": 133700.51,
+       "profit": 10795.66,
+       "break_even_price": 1939.13,
+       "possible": true,
+       "vs_sell_now": 1845.66,
+       "forecast_beats_naive_on_test": true,
+       "forecast_test_mape": 20.78189280473387,
+       "storage_life_unknown": false,
+       "label": "Store 30 days, then sell"
+      }
+     ],
+     "best": {
+      "days": 30,
+      "price_per_quintal": 2158.32,
+      "sellable_quintals": 49.75,
+      "storage_cost": 507.0,
+      "transport_cost": 5000,
+      "market_fee": 1073.76,
+      "net_revenue": 100795.66,
+      "net_revenue_low": 70222.54,
+      "net_revenue_high": 133700.51,
+      "profit": 10795.66,
+      "break_even_price": 1939.13,
+      "possible": true,
+      "vs_sell_now": 1845.66,
+      "forecast_beats_naive_on_test": true,
+      "forecast_test_mape": 20.78189280473387,
+      "storage_life_unknown": false,
+      "label": "Store 30 days, then sell"
+     },
+     "unavailable_horizons": [],
+     "storage_option": {
+      "id": "warehouse",
+      "name": "Warehouse / godown (CWC or State Warehousing)",
+      "used_cost_per_quintal_per_month": 10.14,
+      "used_loss_pct_per_30_days": 0.5,
+      "used_max_days": 365
+     },
+     "series": {
+      "state": "Telangana",
+      "district": "Nalgonda",
+      "market": "Choutuppal",
+      "commodity": "Paddy (Dhan)(Common)",
+      "variety": "I.R. 64",
+      "grade": "FAQ"
+     },
+     "model_version": "20261112055602-bc3863ce"
+    }
+   ],
+   "recommendation": {
+    "market": "Nakrekal",
+    "distance_km": 15,
+    "option": {
+     "days": 14,
+     "price_per_quintal": 2402.03,
+     "sellable_quintals": 49.883,
+     "storage_cost": 236.6,
+     "transport_cost": 1500,
+     "market_fee": 1198.21,
+     "net_revenue": 116886.45,
+     "net_revenue_low": 88941.74,
+     "net_revenue_high": 148446.9,
+     "profit": 26886.45,
+     "break_even_price": 1857.6,
+     "possible": true,
+     "vs_sell_now": 130.95,
+     "forecast_beats_naive_on_test": true,
+     "forecast_test_mape": 17.240150806056647,
+     "storage_life_unknown": false,
+     "label": "Store 14 days, then sell"
+    },
+    "margin_over_next_best": 5076.45
+   },
+   "assumptions": [
+    "Transport = road distance entered by the admin x the fare rate (INR per quintal per km), one way.",
+    "Each mandi uses its own latest recorded price and its own trained forecasts; mandis without enough history get no figure rather than a borrowed one.",
+    "Store-later figures are model forecasts with their tested error, not guarantees."
+   ]
+  },
+  "market": {
+   "Nakrekal": {
+    "arrival_date": "2025-10-17",
+    "min_price": 2389.0,
+    "max_price": 2389.0,
+    "modal_price": 2389.0,
+    "price_unit": "INR/quintal",
+    "source_kind": "third_party_mirror",
+    "live": false
+   },
+   "Neredcherla": {
+    "arrival_date": "2025-11-02",
+    "min_price": 2380.0,
+    "max_price": 2380.0,
+    "modal_price": 2380.0,
+    "price_unit": "INR/quintal",
+    "source_kind": "third_party_mirror",
+    "live": false
+   },
+   "Choutuppal": {
+    "arrival_date": "2025-10-29",
+    "min_price": 2000.0,
+    "max_price": 2200.0,
+    "modal_price": 2100.0,
+    "price_unit": "INR/quintal",
+    "source_kind": "third_party_mirror",
+    "live": false
+   }
+  },
+  "source": {
+   "dataset": "agmarknet",
+   "name": "AGMARKNET prices: official data.gov.in downloads and a Kaggle mirror",
+   "publisher": [
+    "Kaggle user khandelwalmanas (third-party mirror of data.gov.in AGMARKNET)"
+   ],
+   "resource_id": "35985678-0d79-46b4-9ed6-6f13308a1d24, kaggle:khandelwalmanas/daily-commodity-prices-india",
+   "resource_url": "https://www.kaggle.com/datasets/khandelwalmanas/daily-commodity-prices-india",
+   "retrieved_at": "2026-11-12T05:14:53+00:00",
+   "observation_range": [
+    "2022-01-01",
+    "2026-11-12"
+   ],
+   "live": false,
+   "cached": true,
+   "third_party": true,
+   "licence": "Government Open Data License - India (GODL), https://www.data.gov.in/Godl",
+   "note": "Served from locally stored downloads. Dates are original observation dates. Some or all rows come from a public Kaggle copy of AGMARKNET data (GODL licence), not directly from data.gov.in."
+  }
+ },
+ "source": null,
+ "meta": {}
+}

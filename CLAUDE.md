@@ -12,6 +12,7 @@ Read these files before starting work:
 Public AgriTech website and agricultural intelligence backend.
 
 Frontend: React + TypeScript + Vite.
+Android: Kotlin + Jetpack Compose (Raithanna farmer advisory, ADR-030).
 Backend: FastAPI.
 ML: Scikit-learn / XGBoost.
 Data: Official government agricultural datasets.
@@ -33,6 +34,9 @@ Tests and checks:
 cd backend && .venv/Scripts/python -m pytest
 cd frontend && npm test && npm run typecheck && npm run build
 python docs/generate_graph.py --check
+
+Android app (see android/README.md):
+cd android && ./gradlew test --console=plain && ./gradlew assembleDebug
 
 Data and training (explicit only, never automatic; see README):
 python -m scripts.fetch_official_data probe|current|history|crop-api|crop-import

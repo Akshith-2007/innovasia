@@ -28,6 +28,15 @@ class Settings(BaseSettings):
     admin_password: str = ""
     device_key: str = ""
     device_offline_after_seconds: int = 30
+    # Raithanna mobile advisory (ADR-030). Empty secret = mobile endpoints disabled.
+    mobile_link_secret: str = ""
+    aws_region: str = "us-east-1"
+    bedrock_model_id: str = ""  # empty = deterministic template narration only
+    bedrock_timeout_seconds: float = 40.0
+    azure_speech_key: str = ""
+    azure_speech_region: str = ""
+    azure_voice_te: str = "te-IN-MohanNeural"
+    azure_voice_en: str = "en-IN-PrabhatNeural"
 
     data_dir: Path = BACKEND_DIR / "data"
     models_dir: Path = BACKEND_DIR / "models"

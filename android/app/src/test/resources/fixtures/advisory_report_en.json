@@ -1,0 +1,17 @@
+{
+ "data": {
+  "stage": "report",
+  "language": "en",
+  "script": "Alright Babai! I'll tell you today's prices for your crop, which mandi leaves you the most money, and what transport will cost. Please listen carefully. Babai, you currently have 50 quintals, that is 5000 kilos, of Paddy. The storage option on record is Warehouse / godown (CWC or State Warehousing). At Nakrekal market, the price recorded on 17 October 2025 was about 2,389 rupees per quintal, that is 24 rupees per kilo. This is stored official data, not today's live price. At Neredcherla market, the price recorded on 2 November 2025 was about 2,380 rupees per quintal, that is 24 rupees per kilo. This is stored official data, not today's live price. At Choutuppal market, the price recorded on 29 October 2025 was about 2,100 rupees per quintal, that is 21 rupees per kilo. The minimum was 2,000 and the maximum 2,200 rupees. This is stored official data, not today's live price. Nakrekal mandi is 15 kilometres away. Selling there now brings 1,19,450 rupees. Transport costs 1,500 rupees. Commission is 1,194 rupees. After all costs you keep 1,16,756 rupees. Neredcherla mandi is 60 kilometres away. Selling there now brings 1,19,000 rupees. Transport costs 6,000 rupees. Commission is 1,190 rupees. After all costs you keep 1,11,810 rupees. Choutuppal mandi is 50 kilometres away. Selling there now brings 1,05,000 rupees. Transport costs 5,000 rupees. Commission is 1,050 rupees. After all costs you keep 98,950 rupees. Loading and unloading charges were not recorded, so they are not included. Storing for 7 days and selling at Nakrekal: forecast price 2,388 rupees per quintal, storage cost 118 rupees, 49.94 quintals left after losses, leaving 1,16,458 rupees. This is only a forecast; in testing it was off by about 14 percent on average. Storing for 14 days and selling at Nakrekal: forecast price 2,402 rupees per quintal, storage cost 237 rupees, 49.88 quintals left after losses, leaving 1,16,886 rupees. This is only a forecast; in testing it was off by about 17 percent on average. Storing for 30 days and selling at Nakrekal: forecast price 2,398 rupees per quintal, storage cost 507 rupees, 49.75 quintals left after losses, leaving 1,16,112 rupees. This is only a forecast; in testing it was off by about 21 percent on average. By my calculation, Babai, selling at Nakrekal after storing for 14 days could leave you about 1,16,886 rupees after all costs. That's why I suggest you consider that mandi. But Babai, storing beats selling now by only 131 rupees, which is smaller than the forecast's usual error, so selling now is also a sound choice. The final decision is always yours, Babai.",
+  "crop": "Paddy",
+  "narration": "template",
+  "narration_note": "Bedrock not configured",
+  "audio": null,
+  "tts_error": {
+   "code": "not_configured",
+   "message": "Azure Speech is not configured (AZURE_SPEECH_KEY, AZURE_SPEECH_REGION)."
+  }
+ },
+ "source": null,
+ "meta": {}
+}
