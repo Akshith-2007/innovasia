@@ -23,6 +23,7 @@ flowchart LR
     cmp_states["Loading/Error/Empty/SourceNote"]
     cmp_planner["StoragePlanner"]
     cmp_statelive["StateLivePrices"]
+    cmp_lots["FarmerLots"]
   end
   subgraph frontend_lib["Frontend services & hooks"]
     fe_hooks["useMarketData (TanStack Query)"]
@@ -39,6 +40,7 @@ flowchart LR
     ep_decision["GET /decision/storage-options, POST /decision/plan|forecast-horizons"]
     ep_device["POST /device/telemetry, GET /device/command"]
     ep_admin["GET /admin/device|telemetry, PUT /admin/device/control"]
+    ep_lots["GET/POST /admin/lots, DELETE /admin/lots/{id}, GET /admin/lots/{id}/compare"]
   end
   subgraph services["Backend services"]
     svc_market["market_service"]
@@ -47,6 +49,7 @@ flowchart LR
     core_ratelimit["RateLimitMiddleware"]
     svc_planner["storage_planner"]
     svc_device["device_service"]
+    svc_lots["lot_service"]
   end
   subgraph ml["ML modules"]
     ml_features["features"]
@@ -80,6 +83,7 @@ flowchart LR
     d_crop["crop_production.parquet"]
     d_meta["sources.json + quality_report.json"]
     d_device["device/state.json + telemetry/*.csv"]
+    d_lots["data/lots/lots.json"]
   end
   subgraph models["Model artifacts"]
     m_artifact["price_model/<version>/"]
@@ -177,3 +181,9 @@ flowchart LR
   ep_admin -->|"calls"| svc_device
   svc_device -->|"reads/writes"| d_device
   x_esp32 -->|"Wi-Fi HTTP (device key)"| ep_device
+  page_admin -->|"renders"| cmp_lots
+  cmp_lots -->|"uses"| fe_api
+  fe_api -->|"HTTP"| ep_lots
+  ep_lots -->|"calls"| svc_lots
+  svc_lots -->|"calls"| svc_planner
+  svc_lots -->|"reads/writes"| d_lots

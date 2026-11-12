@@ -28,3 +28,5 @@ backend/models/current.json
 Thumbs.db
 frontend/test-results/
 frontend/playwright-report/
+# farmer lots hold names/phones (ADR-026)
+backend/data/lots/

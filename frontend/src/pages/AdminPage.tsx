@@ -3,6 +3,7 @@ import { AlertTriangle, CheckCircle2, Droplets, Info, LogOut, Power, Thermometer
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
+import { FarmerLots } from "@/components/admin/FarmerLots";
 import { axisProps, chartColors } from "@/components/charts/theme";
 import { ErrorState, LoadingBlock } from "@/components/layout/States";
 import { Badge } from "@/components/ui/card";
@@ -224,6 +225,8 @@ function Dashboard({ password, onAuthFail }: { password: string; onAuthFail: () 
       >
         {telemetry.isLoading ? <LoadingBlock /> : telemetry.isError ? <ErrorState error={telemetry.error} /> : <Charts rows={telemetry.data!.data} />}
       </Panel>
+
+      <FarmerLots password={password} />
     </div>
   );
 }

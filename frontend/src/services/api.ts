@@ -54,10 +54,10 @@ export const api = {
   getRaw<T>(path: string, params?: Params) {
     return request<T>(url(path, params));
   },
-  post<T>(path: string, body: unknown) {
+  post<T>(path: string, body: unknown, headers?: HeadersInit) {
     return request<Envelope<T>>(url(path), {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", ...headers },
       body: JSON.stringify(body),
     });
   },
@@ -67,5 +67,8 @@ export const api = {
       headers: { "Content-Type": "application/json", ...headers },
       body: JSON.stringify(body),
     });
+  },
+  del<T>(path: string, headers?: HeadersInit) {
+    return request<Envelope<T>>(url(path), { method: "DELETE", headers });
   },
 };

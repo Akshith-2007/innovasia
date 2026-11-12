@@ -6,13 +6,13 @@
     "lower_c": null
   },
   "pcm": {
-    "mass_kg": null,
-    "latent_kj_per_kg": null,
-    "melt_c": null,
-    "ambient_c": null,
-    "wall_area_m2": null,
-    "insulation_mm": null,
-    "insulation_k": null,
+    "mass_kg": 1.0,
+    "latent_kj_per_kg": 334.0,
+    "melt_c": 0.0,
+    "ambient_c": 30.0,
+    "wall_area_m2": 0.24,
+    "insulation_mm": 25.0,
+    "insulation_k": 0.036,
     "coil_w_per_k": null,
     "state_of_charge": 1.0,
     "updated_at": null
