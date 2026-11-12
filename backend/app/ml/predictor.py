@@ -154,20 +154,3 @@ def forecast_horizons(query: dict[str, str | None], model: LoadedModel | None = 
         "model_version": model.version,
         "data_cutoff": model.metadata["data_cutoff"],
     }
-
-
-def forecast_series_batch(prices: pd.DataFrame, keys: list[tuple[str, ...]], model: LoadedModel) -> dict[tuple, dict]:
-    """Horizon forecasts for many eligible series; pass `prices` pre-filtered (e.g. to one commodity) for speed."""
-    out: dict[tuple, dict] = {}
-    for key in keys:
-        if key not in model.eligible_keys:
-            continue
-        row, _ = _series_row(prices, key, model.metadata["encodings"])
-        if row.empty or row[F.FEATURES].isna().any(axis=None):
-            continue
-        out[key] = {
-            "latest_observation": {"date": str(pd.Timestamp(row["arrival_date"].iat[0]).date()),
-                                   "modal_price": float(row["modal_price"].iat[0])},
-            "horizons": _horizons(model, key, row),
-        }
-    return out

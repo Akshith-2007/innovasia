@@ -449,36 +449,6 @@
       "group": "data",
       "label": "data/lots/lots.json",
       "path": "backend/data"
-    },
-    {
-      "id": "cmp_farmer",
-      "group": "components",
-      "label": "FarmerPortal",
-      "path": "frontend/src/components/admin/FarmerPortal.tsx"
-    },
-    {
-      "id": "ep_farmer",
-      "group": "endpoints",
-      "label": "/admin/farmer/lots, /admin/farmer/lots/{id}/plan, /admin/farmer/settings",
-      "path": "backend/app/api/farmer.py"
-    },
-    {
-      "id": "svc_farmer",
-      "group": "services",
-      "label": "farmer_service",
-      "path": "backend/app/services/farmer_service.py"
-    },
-    {
-      "id": "svc_geo",
-      "group": "services",
-      "label": "geo (district HQ distances)",
-      "path": "backend/app/services/geo.py"
-    },
-    {
-      "id": "d_farmer",
-      "group": "data",
-      "label": "farmer/lots.json + settings.json",
-      "path": "backend/data"
     }
   ],
   "edges": [
@@ -930,46 +900,6 @@
     [
       "svc_lots",
       "d_lots",
-      "reads/writes"
-    ],
-    [
-      "page_admin",
-      "cmp_farmer",
-      "renders"
-    ],
-    [
-      "cmp_farmer",
-      "fe_api",
-      "calls (admin password)"
-    ],
-    [
-      "fe_api",
-      "ep_farmer",
-      "HTTP"
-    ],
-    [
-      "ep_farmer",
-      "svc_farmer",
-      "calls"
-    ],
-    [
-      "svc_farmer",
-      "svc_geo",
-      "distances"
-    ],
-    [
-      "svc_farmer",
-      "ml_predictor",
-      "batch horizon forecasts"
-    ],
-    [
-      "svc_farmer",
-      "svc_planner",
-      "scenario maths"
-    ],
-    [
-      "svc_farmer",
-      "d_farmer",
       "reads/writes"
     ]
   ]

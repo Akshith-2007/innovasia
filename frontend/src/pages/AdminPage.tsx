@@ -9,7 +9,6 @@ import { ErrorState, LoadingBlock } from "@/components/layout/States";
 import { Badge } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn, formatNumber } from "@/lib/utils";
-import { FarmerPortal } from "@/components/admin/FarmerPortal";
 import { api, ApiError } from "@/services/api";
 
 type Reading = { chamber_temp_c: number | null; humidity_pct: number | null; coil_temp_c: number | null; pump_on: boolean };
@@ -90,11 +89,10 @@ export default function AdminPage() {
 }
 
 function Tabs({ password, onAuthFail }: { password: string; onAuthFail: () => void }) {
-  const [tab, setTab] = useState<"chamber" | "compare" | "lots">("chamber");
+  const [tab, setTab] = useState<"chamber" | "lots">("chamber");
   const tabs = [
     { id: "chamber", label: "Chamber monitor" },
-    { id: "compare", label: "Lots: best mandi by distance" },
-    { id: "lots", label: "Farmer lots & sale plans" },
+    { id: "lots", label: "Farmer lots & best mandi" },
   ] as const;
   return (
     <div className="space-y-8">
@@ -115,13 +113,7 @@ function Tabs({ password, onAuthFail }: { password: string; onAuthFail: () => vo
         ))}
       </div>
       <div role="tabpanel">
-        {tab === "chamber" ? (
-          <Dashboard password={password} onAuthFail={onAuthFail} />
-        ) : tab === "compare" ? (
-          <FarmerLots password={password} />
-        ) : (
-          <FarmerPortal password={password} />
-        )}
+        {tab === "chamber" ? <Dashboard password={password} onAuthFail={onAuthFail} /> : <FarmerLots password={password} />}
       </div>
     </div>
   );

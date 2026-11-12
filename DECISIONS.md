@@ -741,7 +741,7 @@ frontend/src/components/admin/FarmerLots.tsx, frontend/src/pages/AdminPage.tsx, 
 ## ADR-027: Farmer lot register with automatic distances and 7/14/30-day sale plans (coexists with ADR-026)
 
 Date: 2026-11-12
-Status: Accepted
+Status: Superseded by ADR-028
 
 Context:
 Developed in parallel with ADR-026 and merged on 2026-11-12; both features are kept. ADR-026 uses
@@ -779,3 +779,31 @@ with long enough history) until names are harmonised.
 Related modules:
 backend/app/services/farmer_service.py, backend/app/services/geo.py, backend/app/api/farmer.py,
 backend/app/ml/predictor.py, frontend/src/components/admin/FarmerPortal.tsx, frontend/src/pages/AdminPage.tsx
+
+---
+
+## ADR-028: Keep only the ADR-026 lots feature (supersedes ADR-027)
+
+Date: 2026-11-12
+Status: Accepted
+
+Context:
+ADR-026 (enftaurus: lots with admin-typed mandi distances, /admin/lots) and ADR-027 (lots with
+district-HQ distance estimates and sale plans, /admin/farmer/lots) were built in parallel and both kept
+at merge. The owner chose the ADR-026 implementation.
+
+Decision:
+Remove the ADR-027 feature: backend/app/api/farmer.py, backend/app/services/farmer_service.py,
+backend/app/services/geo.py, backend/tests/test_farmer.py, frontend/src/components/admin/FarmerPortal.tsx,
+the predictor's batch forecast helper used only by it, and its admin tab and git-ignore entry.
+ADR-026 is unchanged.
+
+Alternatives:
+Keep both (duplicated features, two lot registers to maintain).
+
+Consequences:
+One lot register (data/lots/). Distances are admin-entered per mandi as ADR-026 describes; the
+district-distance estimate and automatic multi-mandi ranking are gone. Recoverable from git history (013c89d).
+
+Related modules:
+backend/app/main.py, backend/app/ml/predictor.py, frontend/src/pages/AdminPage.tsx, .gitignore

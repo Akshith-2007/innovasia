@@ -159,22 +159,12 @@ plain HTTP: use only on a trusted Wi-Fi network.
 
 ## Farmer lots: best mandi after transport (ADR-026)
 
-In the admin portal, **Lots: best mandi by distance** tab → **Add lot** records the farmer, village and location (typed or
+In the admin portal, **Farmer lots & best mandi** tab → **Add lot** records the farmer, village and location (typed or
 "Use this device's location"), commodity, quantity, costs, the transport fare in ₹ per quintal per km,
 and the nearby mandis with their road distance in km (enter from a map; distances are never guessed).
 Optionally pick a storage option to also compare the 7/14/30-day forecasts. **Best mandi** then shows,
 for every mandi, net receipts after transport (km × rate × quantity), fees and storage, and highlights
 the mandi and selling time that pays the most. Mandis without enough history show the reason, not a number.
-
-## Farmer lots and 7/14/30-day sale plans (admin portal, ADR-027)
-
-Admin portal → **Farmer lots & sale plans** tab (automatic district distances):
-1. Cold storage settings: the storage's district, transport ₹ per quintal per km, storage rent, expected
-   loss % per 30 days, optional commission % and maximum distance.
-2. Add a lot: farmer name, village, commodity (optional variety), quantity in quintals, entry date.
-3. **Sale plan** ranks every mandi with a current forecast for that commodity: sell now or after
-   7/14/30 days, net money after loss, transport (district-to-district km, approx.), storage rent from
-   the entry date and fees. Lots and settings are stored in `backend/data/farmer/`.
 
 ## Validation and processing
 
@@ -201,7 +191,7 @@ has enough history, training stops with `INSUFFICIENT DATA` and creates no model
 ## Testing
 
 ```bash
-cd backend && .venv/Scripts/python -m pytest    # 64 tests: provider errors, pagination, CSV import, validation, leakage, splits, API
+cd backend && .venv/Scripts/python -m pytest    # 59 tests: provider errors, pagination, CSV import, validation, leakage, splits, API
 cd frontend && npm test                          # 18 tests: states, source labels, no fake values, all pages render
 cd frontend && npm run typecheck && npm run build
 cd frontend && npm run test:e2e                  # Playwright + axe at desktop/tablet/mobile (first time: npx playwright install chromium)
