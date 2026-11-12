@@ -1,0 +1,852 @@
+{
+  "version": 1,
+  "updated": "2026-11-12",
+  "description": "Kisan Cold Link codebase graph. Source of truth; regenerate the Mermaid file with `python docs/generate_graph.py`.",
+  "groups": {
+    "pages": "Frontend pages",
+    "components": "Frontend components",
+    "frontend_lib": "Frontend services & hooks",
+    "endpoints": "API endpoints (/api/v1)",
+    "services": "Backend services",
+    "ml": "ML modules",
+    "pipeline": "Data pipeline",
+    "providers": "Data providers",
+    "scripts": "Explicit commands",
+    "data": "Data files",
+    "models": "Model artifacts",
+    "external": "External"
+  },
+  "nodes": [
+    {
+      "id": "page_home",
+      "group": "pages",
+      "label": "/ Home",
+      "path": "frontend/src/pages/HomePage.tsx"
+    },
+    {
+      "id": "page_about",
+      "group": "pages",
+      "label": "/about",
+      "path": "frontend/src/pages/AboutPage.tsx"
+    },
+    {
+      "id": "page_tech",
+      "group": "pages",
+      "label": "/technology",
+      "path": "frontend/src/pages/TechnologyPage.tsx"
+    },
+    {
+      "id": "page_market",
+      "group": "pages",
+      "label": "/market-intelligence",
+      "path": "frontend/src/pages/MarketIntelligencePage.tsx"
+    },
+    {
+      "id": "page_research",
+      "group": "pages",
+      "label": "/research",
+      "path": "frontend/src/pages/ResearchPage.tsx"
+    },
+    {
+      "id": "page_contact",
+      "group": "pages",
+      "label": "/contact",
+      "path": "frontend/src/pages/ContactPage.tsx"
+    },
+    {
+      "id": "cmp_layout",
+      "group": "components",
+      "label": "Layout / Header / Footer",
+      "path": "frontend/src/components/layout"
+    },
+    {
+      "id": "cmp_hero",
+      "group": "components",
+      "label": "Hero",
+      "path": "frontend/src/components/hero/Hero.tsx"
+    },
+    {
+      "id": "cmp_diagrams",
+      "group": "components",
+      "label": "PCM + water-loop diagrams",
+      "path": "frontend/src/components/sections/diagrams.tsx"
+    },
+    {
+      "id": "cmp_filters",
+      "group": "components",
+      "label": "MarketFilters",
+      "path": "frontend/src/components/market/MarketFilters.tsx"
+    },
+    {
+      "id": "cmp_pricecards",
+      "group": "components",
+      "label": "PriceCards",
+      "path": "frontend/src/components/market/PriceCards.tsx"
+    },
+    {
+      "id": "cmp_history",
+      "group": "components",
+      "label": "PriceHistoryChart",
+      "path": "frontend/src/components/charts/PriceHistoryChart.tsx"
+    },
+    {
+      "id": "cmp_compare",
+      "group": "components",
+      "label": "CompareChart",
+      "path": "frontend/src/components/charts/CompareChart.tsx"
+    },
+    {
+      "id": "cmp_forecast",
+      "group": "components",
+      "label": "ForecastPanel",
+      "path": "frontend/src/components/market/ForecastPanel.tsx"
+    },
+    {
+      "id": "cmp_crop",
+      "group": "components",
+      "label": "CropStatistics",
+      "path": "frontend/src/components/market/CropStatistics.tsx"
+    },
+    {
+      "id": "cmp_states",
+      "group": "components",
+      "label": "Loading/Error/Empty/SourceNote",
+      "path": "frontend/src/components/layout/States.tsx"
+    },
+    {
+      "id": "fe_hooks",
+      "group": "frontend_lib",
+      "label": "useMarketData (TanStack Query)",
+      "path": "frontend/src/hooks/useMarketData.ts"
+    },
+    {
+      "id": "fe_api",
+      "group": "frontend_lib",
+      "label": "api client",
+      "path": "frontend/src/services/api.ts"
+    },
+    {
+      "id": "ep_health",
+      "group": "endpoints",
+      "label": "GET /health",
+      "path": "backend/app/api/health.py"
+    },
+    {
+      "id": "ep_markets",
+      "group": "endpoints",
+      "label": "GET /markets/*",
+      "path": "backend/app/api/markets.py"
+    },
+    {
+      "id": "ep_commodities",
+      "group": "endpoints",
+      "label": "GET /commodities*",
+      "path": "backend/app/api/commodities.py"
+    },
+    {
+      "id": "ep_prices",
+      "group": "endpoints",
+      "label": "GET /market/prices|history|trends|compare",
+      "path": "backend/app/api/prices.py"
+    },
+    {
+      "id": "ep_agri",
+      "group": "endpoints",
+      "label": "GET /agriculture/*",
+      "path": "backend/app/api/agriculture.py"
+    },
+    {
+      "id": "ep_ml",
+      "group": "endpoints",
+      "label": "GET /ml/model-info|metrics, POST /ml/predict",
+      "path": "backend/app/api/predictions.py"
+    },
+    {
+      "id": "ep_sources",
+      "group": "endpoints",
+      "label": "GET /data/sources",
+      "path": "backend/app/api/sources.py"
+    },
+    {
+      "id": "svc_market",
+      "group": "services",
+      "label": "market_service",
+      "path": "backend/app/services/market_service.py"
+    },
+    {
+      "id": "svc_data",
+      "group": "services",
+      "label": "data_service",
+      "path": "backend/app/services/data_service.py"
+    },
+    {
+      "id": "svc_stats",
+      "group": "services",
+      "label": "statistics_service",
+      "path": "backend/app/services/statistics_service.py"
+    },
+    {
+      "id": "ml_features",
+      "group": "ml",
+      "label": "features",
+      "path": "backend/app/ml/features.py"
+    },
+    {
+      "id": "ml_training",
+      "group": "ml",
+      "label": "training",
+      "path": "backend/app/ml/training.py"
+    },
+    {
+      "id": "ml_loader",
+      "group": "ml",
+      "label": "model_loader",
+      "path": "backend/app/ml/model_loader.py"
+    },
+    {
+      "id": "ml_predictor",
+      "group": "ml",
+      "label": "predictor",
+      "path": "backend/app/ml/predictor.py"
+    },
+    {
+      "id": "ml_metadata",
+      "group": "ml",
+      "label": "metadata",
+      "path": "backend/app/ml/metadata.py"
+    },
+    {
+      "id": "pl_raw",
+      "group": "pipeline",
+      "label": "raw_store",
+      "path": "backend/app/pipeline/raw_store.py"
+    },
+    {
+      "id": "pl_market",
+      "group": "pipeline",
+      "label": "market_processing",
+      "path": "backend/app/pipeline/market_processing.py"
+    },
+    {
+      "id": "pl_crop",
+      "group": "pipeline",
+      "label": "crop_processing",
+      "path": "backend/app/pipeline/crop_processing.py"
+    },
+    {
+      "id": "pr_datagov",
+      "group": "providers",
+      "label": "data_gov client",
+      "path": "backend/app/providers/data_gov.py"
+    },
+    {
+      "id": "pr_agmarknet",
+      "group": "providers",
+      "label": "agmarknet mapping",
+      "path": "backend/app/providers/agmarknet.py"
+    },
+    {
+      "id": "sc_fetch",
+      "group": "scripts",
+      "label": "fetch_official_data",
+      "path": "backend/scripts/fetch_official_data.py"
+    },
+    {
+      "id": "sc_validate",
+      "group": "scripts",
+      "label": "validate_data",
+      "path": "backend/scripts/validate_data.py"
+    },
+    {
+      "id": "sc_preprocess",
+      "group": "scripts",
+      "label": "preprocess_data",
+      "path": "backend/scripts/preprocess_data.py"
+    },
+    {
+      "id": "sc_train",
+      "group": "scripts",
+      "label": "train_price_model",
+      "path": "backend/scripts/train_price_model.py"
+    },
+    {
+      "id": "sc_eval",
+      "group": "scripts",
+      "label": "evaluate_model",
+      "path": "backend/scripts/evaluate_model.py"
+    },
+    {
+      "id": "sc_dev",
+      "group": "scripts",
+      "label": "dev.sh",
+      "path": "dev.sh"
+    },
+    {
+      "id": "d_raw",
+      "group": "data",
+      "label": "data/raw/<dataset>/<run>/",
+      "path": "backend/data/raw"
+    },
+    {
+      "id": "d_prices",
+      "group": "data",
+      "label": "market_prices.parquet",
+      "path": "backend/data/processed/market_prices.parquet"
+    },
+    {
+      "id": "d_crop",
+      "group": "data",
+      "label": "crop_production.parquet",
+      "path": "backend/data/processed/crop_production.parquet"
+    },
+    {
+      "id": "d_meta",
+      "group": "data",
+      "label": "sources.json + quality_report.json",
+      "path": "backend/data/metadata"
+    },
+    {
+      "id": "m_artifact",
+      "group": "models",
+      "label": "price_model/<version>/",
+      "path": "backend/models/price_model"
+    },
+    {
+      "id": "m_current",
+      "group": "models",
+      "label": "current.json",
+      "path": "backend/models/current.json"
+    },
+    {
+      "id": "x_datagov",
+      "group": "external",
+      "label": "api.data.gov.in (AGMARKNET, crop stats)"
+    },
+    {
+      "id": "x_libs_be",
+      "group": "external",
+      "label": "FastAPI, pandas, scikit-learn, XGBoost, PyArrow"
+    },
+    {
+      "id": "x_libs_fe",
+      "group": "external",
+      "label": "React, Vite, Tailwind, Recharts, Motion, TanStack Query"
+    },
+    {
+      "id": "page_error",
+      "group": "pages",
+      "label": "Route error page",
+      "path": "frontend/src/pages/RouteErrorPage.tsx"
+    },
+    {
+      "id": "test_e2e",
+      "group": "scripts",
+      "label": "Playwright + axe e2e",
+      "path": "frontend/e2e/site.spec.ts"
+    },
+    {
+      "id": "x_playwright",
+      "group": "external",
+      "label": "Playwright, axe-core (dev)"
+    },
+    {
+      "id": "core_ratelimit",
+      "group": "services",
+      "label": "RateLimitMiddleware",
+      "path": "backend/app/core/rate_limit.py"
+    },
+    {
+      "id": "sc_kaggle",
+      "group": "scripts",
+      "label": "import_kaggle_mirror",
+      "path": "backend/scripts/import_kaggle_mirror.py"
+    },
+    {
+      "id": "x_kaggle",
+      "group": "external",
+      "label": "Kaggle mirror of AGMARKNET (GODL)"
+    },
+    {
+      "id": "page_admin",
+      "group": "pages",
+      "label": "/admin cold storage portal",
+      "path": "frontend/src/pages/AdminPage.tsx"
+    },
+    {
+      "id": "cmp_planner",
+      "group": "components",
+      "label": "StoragePlanner",
+      "path": "frontend/src/components/market/StoragePlanner.tsx"
+    },
+    {
+      "id": "cmp_statelive",
+      "group": "components",
+      "label": "StateLivePrices",
+      "path": "frontend/src/components/market/StateLivePrices.tsx"
+    },
+    {
+      "id": "ep_decision",
+      "group": "endpoints",
+      "label": "GET /decision/storage-options, POST /decision/plan|forecast-horizons",
+      "path": "backend/app/api/decision.py"
+    },
+    {
+      "id": "ep_device",
+      "group": "endpoints",
+      "label": "POST /device/telemetry, GET /device/command",
+      "path": "backend/app/api/device.py"
+    },
+    {
+      "id": "ep_admin",
+      "group": "endpoints",
+      "label": "GET /admin/device|telemetry, PUT /admin/device/control",
+      "path": "backend/app/api/device.py"
+    },
+    {
+      "id": "svc_planner",
+      "group": "services",
+      "label": "storage_planner",
+      "path": "backend/app/services/storage_planner.py"
+    },
+    {
+      "id": "svc_device",
+      "group": "services",
+      "label": "device_service",
+      "path": "backend/app/services/device_service.py"
+    },
+    {
+      "id": "d_device",
+      "group": "data",
+      "label": "device/state.json + telemetry/*.csv",
+      "path": "backend/data"
+    },
+    {
+      "id": "x_esp32",
+      "group": "external",
+      "label": "ESP32 node (DHT11, DS18B20, pump)",
+      "path": "firmware/kisan_cold_link_esp32/kisan_cold_link_esp32.ino"
+    }
+  ],
+  "edges": [
+    [
+      "page_home",
+      "cmp_hero",
+      "renders"
+    ],
+    [
+      "page_home",
+      "cmp_diagrams",
+      "renders"
+    ],
+    [
+      "page_tech",
+      "cmp_diagrams",
+      "renders"
+    ],
+    [
+      "page_market",
+      "cmp_filters",
+      "renders"
+    ],
+    [
+      "page_market",
+      "cmp_pricecards",
+      "renders"
+    ],
+    [
+      "page_market",
+      "cmp_history",
+      "renders"
+    ],
+    [
+      "page_market",
+      "cmp_compare",
+      "renders"
+    ],
+    [
+      "page_market",
+      "cmp_forecast",
+      "renders"
+    ],
+    [
+      "page_market",
+      "cmp_crop",
+      "renders"
+    ],
+    [
+      "page_research",
+      "fe_hooks",
+      "uses"
+    ],
+    [
+      "cmp_filters",
+      "fe_hooks",
+      "uses"
+    ],
+    [
+      "cmp_pricecards",
+      "fe_hooks",
+      "uses"
+    ],
+    [
+      "cmp_forecast",
+      "fe_hooks",
+      "uses"
+    ],
+    [
+      "cmp_crop",
+      "fe_hooks",
+      "uses"
+    ],
+    [
+      "cmp_pricecards",
+      "cmp_states",
+      "uses"
+    ],
+    [
+      "fe_hooks",
+      "fe_api",
+      "calls"
+    ],
+    [
+      "fe_api",
+      "ep_health",
+      "HTTP"
+    ],
+    [
+      "fe_api",
+      "ep_markets",
+      "HTTP"
+    ],
+    [
+      "fe_api",
+      "ep_commodities",
+      "HTTP"
+    ],
+    [
+      "fe_api",
+      "ep_prices",
+      "HTTP"
+    ],
+    [
+      "fe_api",
+      "ep_agri",
+      "HTTP"
+    ],
+    [
+      "fe_api",
+      "ep_ml",
+      "HTTP"
+    ],
+    [
+      "fe_api",
+      "ep_sources",
+      "HTTP"
+    ],
+    [
+      "ep_markets",
+      "svc_market",
+      "calls"
+    ],
+    [
+      "ep_commodities",
+      "svc_market",
+      "calls"
+    ],
+    [
+      "ep_prices",
+      "svc_market",
+      "calls"
+    ],
+    [
+      "ep_agri",
+      "svc_stats",
+      "calls"
+    ],
+    [
+      "ep_sources",
+      "svc_data",
+      "calls"
+    ],
+    [
+      "ep_ml",
+      "ml_predictor",
+      "calls"
+    ],
+    [
+      "ep_ml",
+      "ml_loader",
+      "calls"
+    ],
+    [
+      "ep_health",
+      "ml_metadata",
+      "reads"
+    ],
+    [
+      "svc_market",
+      "svc_data",
+      "reads"
+    ],
+    [
+      "svc_market",
+      "pr_agmarknet",
+      "live prices"
+    ],
+    [
+      "svc_stats",
+      "svc_data",
+      "reads"
+    ],
+    [
+      "svc_data",
+      "d_prices",
+      "reads"
+    ],
+    [
+      "svc_data",
+      "d_crop",
+      "reads"
+    ],
+    [
+      "svc_data",
+      "d_meta",
+      "reads"
+    ],
+    [
+      "ml_predictor",
+      "ml_features",
+      "uses"
+    ],
+    [
+      "ml_predictor",
+      "svc_data",
+      "reads"
+    ],
+    [
+      "ml_loader",
+      "m_current",
+      "reads"
+    ],
+    [
+      "ml_loader",
+      "m_artifact",
+      "loads"
+    ],
+    [
+      "pr_agmarknet",
+      "pr_datagov",
+      "uses"
+    ],
+    [
+      "pr_datagov",
+      "x_datagov",
+      "HTTPS"
+    ],
+    [
+      "sc_fetch",
+      "pr_datagov",
+      "uses"
+    ],
+    [
+      "sc_fetch",
+      "pl_raw",
+      "writes via"
+    ],
+    [
+      "pl_raw",
+      "d_raw",
+      "writes"
+    ],
+    [
+      "sc_validate",
+      "pl_market",
+      "uses"
+    ],
+    [
+      "sc_preprocess",
+      "pl_market",
+      "uses"
+    ],
+    [
+      "sc_preprocess",
+      "pl_crop",
+      "uses"
+    ],
+    [
+      "pl_market",
+      "d_raw",
+      "reads"
+    ],
+    [
+      "pl_crop",
+      "d_raw",
+      "reads"
+    ],
+    [
+      "sc_preprocess",
+      "d_prices",
+      "writes"
+    ],
+    [
+      "sc_preprocess",
+      "d_crop",
+      "writes"
+    ],
+    [
+      "sc_preprocess",
+      "d_meta",
+      "writes"
+    ],
+    [
+      "sc_train",
+      "ml_training",
+      "uses"
+    ],
+    [
+      "ml_training",
+      "ml_features",
+      "uses"
+    ],
+    [
+      "ml_training",
+      "d_prices",
+      "reads"
+    ],
+    [
+      "ml_training",
+      "m_artifact",
+      "writes"
+    ],
+    [
+      "ml_training",
+      "m_current",
+      "writes"
+    ],
+    [
+      "sc_eval",
+      "m_artifact",
+      "reads"
+    ],
+    [
+      "sc_dev",
+      "x_libs_be",
+      "starts uvicorn"
+    ],
+    [
+      "sc_dev",
+      "x_libs_fe",
+      "starts vite"
+    ],
+    [
+      "page_error",
+      "cmp_layout",
+      "fallback for"
+    ],
+    [
+      "test_e2e",
+      "x_playwright",
+      "uses"
+    ],
+    [
+      "test_e2e",
+      "fe_api",
+      "exercises via browser"
+    ],
+    [
+      "sc_dev",
+      "test_e2e",
+      "servers reused by"
+    ],
+    [
+      "fe_api",
+      "core_ratelimit",
+      "passes through"
+    ],
+    [
+      "core_ratelimit",
+      "ep_prices",
+      "guards"
+    ],
+    [
+      "core_ratelimit",
+      "ep_ml",
+      "guards"
+    ],
+    [
+      "sc_kaggle",
+      "x_kaggle",
+      "HTTPS download"
+    ],
+    [
+      "sc_kaggle",
+      "pl_raw",
+      "writes via"
+    ],
+    [
+      "page_market",
+      "cmp_planner",
+      "renders"
+    ],
+    [
+      "page_market",
+      "cmp_statelive",
+      "renders"
+    ],
+    [
+      "cmp_planner",
+      "fe_api",
+      "calls"
+    ],
+    [
+      "cmp_statelive",
+      "fe_api",
+      "calls"
+    ],
+    [
+      "page_admin",
+      "fe_api",
+      "calls (admin password)"
+    ],
+    [
+      "fe_api",
+      "ep_decision",
+      "HTTP"
+    ],
+    [
+      "fe_api",
+      "ep_admin",
+      "HTTP"
+    ],
+    [
+      "ep_decision",
+      "svc_planner",
+      "calls"
+    ],
+    [
+      "svc_planner",
+      "ml_predictor",
+      "horizon forecasts"
+    ],
+    [
+      "ep_device",
+      "svc_device",
+      "calls"
+    ],
+    [
+      "ep_admin",
+      "svc_device",
+      "calls"
+    ],
+    [
+      "svc_device",
+      "d_device",
+      "reads/writes"
+    ],
+    [
+      "x_esp32",
+      "ep_device",
+      "Wi-Fi HTTP (device key)"
+    ]
+  ]
+}

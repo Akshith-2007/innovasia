@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/* Kisan Cold Link design tokens (ADR-016). Use these names; do not introduce ad-hoc hex values. */
+@theme {
+  --font-display: "Fraunces Variable", ui-serif, Georgia, serif;
+  --font-sans: "Public Sans Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-forest: #1f4d36;
+  --color-forest-deep: #12301f;
+  --color-forest-soft: #2d6a4b;
+  --color-charcoal: #1c1f1d;
+  --color-ink: #2b2f2c;
+  --color-muted: #565c55;
+  --color-paper: #f6f3ec;
+  --color-paper-deep: #ece7dc;
+  --color-sage: #c9d5c1;
+  --color-sage-soft: #e3e9dd;
+  --color-line: #d9d4c7;
+  --color-amber: #c8892b;
+  --color-amber-soft: #e0b062;
+  --color-amber-ink: #7a5016;
+  --color-danger: #a23b2a;
+
+  --radius-card: 1.25rem;
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-charcoal;
+    font-optical-sizing: auto;
+    letter-spacing: -0.015em;
+  }
+  ::selection {
+    @apply bg-sage text-forest-deep;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-amber;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility container-site {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (min-width: 640px) { padding-inline: 1.5rem; }
+  @media (min-width: 1024px) { padding-inline: 2rem; }
+}
+
+@utility eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.18em] text-forest-soft;
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}

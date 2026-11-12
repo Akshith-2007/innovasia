@@ -1,0 +1,179 @@
+%% GENERATED from knowledge-graph.json by docs/generate_graph.py. Do not edit by hand.
+flowchart LR
+  subgraph pages["Frontend pages"]
+    page_home["/ Home"]
+    page_about["/about"]
+    page_tech["/technology"]
+    page_market["/market-intelligence"]
+    page_research["/research"]
+    page_contact["/contact"]
+    page_error["Route error page"]
+    page_admin["/admin cold storage portal"]
+  end
+  subgraph components["Frontend components"]
+    cmp_layout["Layout / Header / Footer"]
+    cmp_hero["Hero"]
+    cmp_diagrams["PCM + water-loop diagrams"]
+    cmp_filters["MarketFilters"]
+    cmp_pricecards["PriceCards"]
+    cmp_history["PriceHistoryChart"]
+    cmp_compare["CompareChart"]
+    cmp_forecast["ForecastPanel"]
+    cmp_crop["CropStatistics"]
+    cmp_states["Loading/Error/Empty/SourceNote"]
+    cmp_planner["StoragePlanner"]
+    cmp_statelive["StateLivePrices"]
+  end
+  subgraph frontend_lib["Frontend services & hooks"]
+    fe_hooks["useMarketData (TanStack Query)"]
+    fe_api["api client"]
+  end
+  subgraph endpoints["API endpoints (/api/v1)"]
+    ep_health["GET /health"]
+    ep_markets["GET /markets/*"]
+    ep_commodities["GET /commodities*"]
+    ep_prices["GET /market/prices|history|trends|compare"]
+    ep_agri["GET /agriculture/*"]
+    ep_ml["GET /ml/model-info|metrics, POST /ml/predict"]
+    ep_sources["GET /data/sources"]
+    ep_decision["GET /decision/storage-options, POST /decision/plan|forecast-horizons"]
+    ep_device["POST /device/telemetry, GET /device/command"]
+    ep_admin["GET /admin/device|telemetry, PUT /admin/device/control"]
+  end
+  subgraph services["Backend services"]
+    svc_market["market_service"]
+    svc_data["data_service"]
+    svc_stats["statistics_service"]
+    core_ratelimit["RateLimitMiddleware"]
+    svc_planner["storage_planner"]
+    svc_device["device_service"]
+  end
+  subgraph ml["ML modules"]
+    ml_features["features"]
+    ml_training["training"]
+    ml_loader["model_loader"]
+    ml_predictor["predictor"]
+    ml_metadata["metadata"]
+  end
+  subgraph pipeline["Data pipeline"]
+    pl_raw["raw_store"]
+    pl_market["market_processing"]
+    pl_crop["crop_processing"]
+  end
+  subgraph providers["Data providers"]
+    pr_datagov["data_gov client"]
+    pr_agmarknet["agmarknet mapping"]
+  end
+  subgraph scripts["Explicit commands"]
+    sc_fetch["fetch_official_data"]
+    sc_validate["validate_data"]
+    sc_preprocess["preprocess_data"]
+    sc_train["train_price_model"]
+    sc_eval["evaluate_model"]
+    sc_dev["dev.sh"]
+    test_e2e["Playwright + axe e2e"]
+    sc_kaggle["import_kaggle_mirror"]
+  end
+  subgraph data["Data files"]
+    d_raw["data/raw/<dataset>/<run>/"]
+    d_prices["market_prices.parquet"]
+    d_crop["crop_production.parquet"]
+    d_meta["sources.json + quality_report.json"]
+    d_device["device/state.json + telemetry/*.csv"]
+  end
+  subgraph models["Model artifacts"]
+    m_artifact["price_model/<version>/"]
+    m_current["current.json"]
+  end
+  subgraph external["External"]
+    x_datagov["api.data.gov.in (AGMARKNET, crop stats)"]
+    x_libs_be["FastAPI, pandas, scikit-learn, XGBoost, PyArrow"]
+    x_libs_fe["React, Vite, Tailwind, Recharts, Motion, TanStack Query"]
+    x_playwright["Playwright, axe-core (dev)"]
+    x_kaggle["Kaggle mirror of AGMARKNET (GODL)"]
+    x_esp32["ESP32 node (DHT11, DS18B20, pump)"]
+  end
+  page_home -->|"renders"| cmp_hero
+  page_home -->|"renders"| cmp_diagrams
+  page_tech -->|"renders"| cmp_diagrams
+  page_market -->|"renders"| cmp_filters
+  page_market -->|"renders"| cmp_pricecards
+  page_market -->|"renders"| cmp_history
+  page_market -->|"renders"| cmp_compare
+  page_market -->|"renders"| cmp_forecast
+  page_market -->|"renders"| cmp_crop
+  page_research -->|"uses"| fe_hooks
+  cmp_filters -->|"uses"| fe_hooks
+  cmp_pricecards -->|"uses"| fe_hooks
+  cmp_forecast -->|"uses"| fe_hooks
+  cmp_crop -->|"uses"| fe_hooks
+  cmp_pricecards -->|"uses"| cmp_states
+  fe_hooks -->|"calls"| fe_api
+  fe_api -->|"HTTP"| ep_health
+  fe_api -->|"HTTP"| ep_markets
+  fe_api -->|"HTTP"| ep_commodities
+  fe_api -->|"HTTP"| ep_prices
+  fe_api -->|"HTTP"| ep_agri
+  fe_api -->|"HTTP"| ep_ml
+  fe_api -->|"HTTP"| ep_sources
+  ep_markets -->|"calls"| svc_market
+  ep_commodities -->|"calls"| svc_market
+  ep_prices -->|"calls"| svc_market
+  ep_agri -->|"calls"| svc_stats
+  ep_sources -->|"calls"| svc_data
+  ep_ml -->|"calls"| ml_predictor
+  ep_ml -->|"calls"| ml_loader
+  ep_health -->|"reads"| ml_metadata
+  svc_market -->|"reads"| svc_data
+  svc_market -->|"live prices"| pr_agmarknet
+  svc_stats -->|"reads"| svc_data
+  svc_data -->|"reads"| d_prices
+  svc_data -->|"reads"| d_crop
+  svc_data -->|"reads"| d_meta
+  ml_predictor -->|"uses"| ml_features
+  ml_predictor -->|"reads"| svc_data
+  ml_loader -->|"reads"| m_current
+  ml_loader -->|"loads"| m_artifact
+  pr_agmarknet -->|"uses"| pr_datagov
+  pr_datagov -->|"HTTPS"| x_datagov
+  sc_fetch -->|"uses"| pr_datagov
+  sc_fetch -->|"writes via"| pl_raw
+  pl_raw -->|"writes"| d_raw
+  sc_validate -->|"uses"| pl_market
+  sc_preprocess -->|"uses"| pl_market
+  sc_preprocess -->|"uses"| pl_crop
+  pl_market -->|"reads"| d_raw
+  pl_crop -->|"reads"| d_raw
+  sc_preprocess -->|"writes"| d_prices
+  sc_preprocess -->|"writes"| d_crop
+  sc_preprocess -->|"writes"| d_meta
+  sc_train -->|"uses"| ml_training
+  ml_training -->|"uses"| ml_features
+  ml_training -->|"reads"| d_prices
+  ml_training -->|"writes"| m_artifact
+  ml_training -->|"writes"| m_current
+  sc_eval -->|"reads"| m_artifact
+  sc_dev -->|"starts uvicorn"| x_libs_be
+  sc_dev -->|"starts vite"| x_libs_fe
+  page_error -->|"fallback for"| cmp_layout
+  test_e2e -->|"uses"| x_playwright
+  test_e2e -->|"exercises via browser"| fe_api
+  sc_dev -->|"servers reused by"| test_e2e
+  fe_api -->|"passes through"| core_ratelimit
+  core_ratelimit -->|"guards"| ep_prices
+  core_ratelimit -->|"guards"| ep_ml
+  sc_kaggle -->|"HTTPS download"| x_kaggle
+  sc_kaggle -->|"writes via"| pl_raw
+  page_market -->|"renders"| cmp_planner
+  page_market -->|"renders"| cmp_statelive
+  cmp_planner -->|"calls"| fe_api
+  cmp_statelive -->|"calls"| fe_api
+  page_admin -->|"calls (admin password)"| fe_api
+  fe_api -->|"HTTP"| ep_decision
+  fe_api -->|"HTTP"| ep_admin
+  ep_decision -->|"calls"| svc_planner
+  svc_planner -->|"horizon forecasts"| ml_predictor
+  ep_device -->|"calls"| svc_device
+  ep_admin -->|"calls"| svc_device
+  svc_device -->|"reads/writes"| d_device
+  x_esp32 -->|"Wi-Fi HTTP (device key)"| ep_device

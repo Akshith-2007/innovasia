@@ -1,0 +1,31 @@
+{
+  "_comment": "TEST FIXTURE - envelope shape only. Values are placeholders, NOT market data.",
+  "status": "ok",
+  "title": "TEST-title",
+  "org": ["TEST-org"],
+  "updated_date": "TEST-date",
+  "total": 3,
+  "count": 2,
+  "limit": "2",
+  "offset": "0",
+  "field": [
+    {"id": "state", "name": "State", "type": "keyword"},
+    {"id": "district", "name": "District", "type": "keyword"},
+    {"id": "market", "name": "Market", "type": "keyword"},
+    {"id": "commodity", "name": "Commodity", "type": "keyword"},
+    {"id": "variety", "name": "Variety", "type": "keyword"},
+    {"id": "grade", "name": "Grade", "type": "keyword"},
+    {"id": "arrival_date", "name": "Arrival_Date", "type": "date"},
+    {"id": "min_price", "name": "Min_x0020_Price", "type": "double"},
+    {"id": "max_price", "name": "Max_x0020_Price", "type": "double"},
+    {"id": "modal_price", "name": "Modal_x0020_Price", "type": "double"}
+  ],
+  "records": [
+    {"state": "TEST-State", "district": "TEST-District", "market": "TEST-Market-1", "commodity": "TEST-Commodity",
+     "variety": "TEST-Variety", "grade": "FAQ", "arrival_date": "01/01/2020",
+     "min_price": "1", "max_price": "3", "modal_price": "2"},
+    {"state": "TEST-State", "district": "TEST-District", "market": "TEST-Market-2", "commodity": "TEST-Commodity",
+     "variety": "TEST-Variety", "grade": "FAQ", "arrival_date": "01/01/2020",
+     "min_price": "NA", "max_price": "3", "modal_price": "2"}
+  ]
+}

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#12301f"/>
+  <g stroke="#2d6a4b" stroke-width="2" fill="none" opacity=".8">
+    <path d="M0 470 C 300 420 600 520 1200 440"/>
+    <path d="M0 510 C 300 460 600 560 1200 480"/>
+    <path d="M0 550 C 300 500 600 600 1200 520"/>
+    <path d="M0 590 C 300 540 600 640 1200 560"/>
+  </g>
+  <text x="80" y="210" fill="#e0b062" font-family="Georgia, serif" font-size="30" letter-spacing="6">KISAN COLD LINK</text>
+  <text x="80" y="300" fill="#f6f3ec" font-family="Georgia, serif" font-size="72">Preserving Produce.</text>
+  <text x="80" y="385" fill="#f6f3ec" font-family="Georgia, serif" font-size="72">Powering Possibilities.</text>
+</svg>

@@ -1,0 +1,22 @@
+{
+  "mode": "manual",
+  "pump_on": false,
+  "auto": {
+    "upper_c": null,
+    "lower_c": null
+  },
+  "pcm": {
+    "mass_kg": null,
+    "latent_kj_per_kg": null,
+    "melt_c": null,
+    "ambient_c": null,
+    "wall_area_m2": null,
+    "insulation_mm": null,
+    "insulation_k": null,
+    "coil_w_per_k": null,
+    "state_of_charge": 1.0,
+    "updated_at": null
+  },
+  "last_seen": null,
+  "last_reading": null
+}

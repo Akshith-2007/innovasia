@@ -1,0 +1,30 @@
+# secrets
+.env
+.env.local
+!.env.example
+
+# python
+backend/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# node
+frontend/node_modules/
+frontend/dist/
+
+# downloaded / generated data and models (reproducible via documented commands)
+backend/data/raw/**/
+backend/data/processed/*.parquet
+backend/data/metadata/*.json
+backend/models/price_model/
+backend/models/current.json
+!**/.gitkeep
+
+# editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+frontend/test-results/
+frontend/playwright-report/
