@@ -13,10 +13,8 @@ __pycache__/
 frontend/node_modules/
 frontend/dist/
 
-# downloaded / generated data (reproducible via documented commands); trained models ARE committed
+# raw downloads stay local (reproducible via documented commands); processed data, metadata and models ARE committed
 backend/data/raw/**/
-backend/data/processed/*.parquet
-backend/data/metadata/*.json
 !**/.gitkeep
 
 # editors / OS

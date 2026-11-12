@@ -807,3 +807,29 @@ district-distance estimate and automatic multi-mandi ranking are gone. Recoverab
 
 Related modules:
 backend/app/main.py, backend/app/ml/predictor.py, frontend/src/pages/AdminPage.tsx, .gitignore
+
+---
+
+## ADR-029: Commit processed data and trained models so a fresh clone works
+
+Date: 2026-11-12
+Status: Accepted
+
+Context:
+A fresh clone could load the committed models but not forecast: the processed price table and its
+provenance files were git-ignored, and rebuilding them needs ~420 MB of raw downloads.
+
+Decision:
+Commit backend/data/processed/market_prices.parquet (~8 MB) and backend/data/metadata/{sources,quality_report}.json
+alongside backend/models/. Raw downloads (backend/data/raw/) stay git-ignored; private files (.env,
+data/lots/) stay ignored. Rebuilding with scripts.preprocess_data and retraining still work as before.
+
+Alternatives:
+Keep data out of git and document the rebuild (slow, needs keys/downloads); Git LFS (extra tooling).
+
+Consequences:
+Repository grows by ~8 MB per committed data refresh; commit refreshed data deliberately. The processed
+table carries per-row source_kind, so Kaggle-mirror labelling (ADR-022) survives in clones.
+
+Related modules:
+.gitignore, backend/data/processed/, backend/data/metadata/, backend/models/

@@ -1,0 +1,867 @@
+{
+  "generated_at": "2026-11-12T05:18:56+00:00",
+  "market_prices": {
+    "input_records": 1498053,
+    "output_records": 1493378,
+    "excluded": {
+      "missing_or_unparseable_arrival_date": 0,
+      "missing_state": 0,
+      "missing_market": 0,
+      "missing_commodity": 0,
+      "missing_or_non_numeric_modal_price": 0,
+      "non_positive_modal_price": 0,
+      "arrival_date_in_future": 0
+    },
+    "exact_duplicates_removed": 4230,
+    "conflicting_duplicate_groups_resolved_latest_retrieval": 445,
+    "flags": {
+      "missing_min_price": 0,
+      "missing_max_price": 0,
+      "negative_min_or_max": 0,
+      "min_greater_than_max": 228,
+      "modal_outside_min_max": 2830,
+      "possible_unit_error": 1572
+    },
+    "observation_date_range": [
+      "2022-01-01",
+      "2026-11-12"
+    ],
+    "states": 3,
+    "markets": 1014,
+    "commodities": 260,
+    "series": 19885,
+    "rows_by_source_kind": {
+      "third_party_mirror": 1198754,
+      "official": 294624
+    },
+    "unknown_commodity_names": [],
+    "markets_in_multiple_districts": [
+      {
+        "state": "Andhra Pradesh",
+        "market": "Ambajipeta APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Anakapally APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Anantapur APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Chintalapudi APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Chintapally APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Denduluru APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Eluru APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Hindupur APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Jaggampet APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Kalikiri APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Kalyandurg APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Madanapalli APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Mylavaram APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Nandyal APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Paderu APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Polavaram APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Pulivendala APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Punganur APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Puttur APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "RAYADURG APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Rampachodvaram APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Rapur APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Rompicherla APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Sarvepalli APMC",
+        "districts": 2
+      },
+      {
+        "state": "Andhra Pradesh",
+        "market": "Tiruvuru APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "Alanda APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "Athani APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "Bailahongal APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "Bantwala APMC",
+        "districts": 3
+      },
+      {
+        "state": "Karnataka",
+        "market": "Belgaum APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "Belthangdi APMC",
+        "districts": 3
+      },
+      {
+        "state": "Karnataka",
+        "market": "Bhadravathi APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "Chickkaballapura APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "Chincholi APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "Chintamani APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "Chittapur APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "Gokak APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "Gonikappal APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "Gubbi APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "Gundlupet APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "H.B. Halli APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "Haliyala APMC",
+        "districts": 3
+      },
+      {
+        "state": "Karnataka",
+        "market": "Honnavar APMC",
+        "districts": 3
+      },
+      {
+        "state": "Karnataka",
+        "market": "Hoovinahadagali APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "Hoskote APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "Hospet APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "Huliyar APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "Hunsur APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "K.R.Nagar APMC",
+        "districts": 2
+      },
+      {
+        "state": "Karnataka",
+        "market": "Kadur APMC",
+        "districts": 2
+      }
+    ],
+    "runs": {
+      "20261111T190836Z_2022": {
+        "resource_id": "kaggle:khandelwalmanas/daily-commodity-prices-india",
+        "source_kind": "third_party_mirror",
+        "fields": [
+          "arrival_date",
+          "commodity",
+          "commodity_code",
+          "district",
+          "grade",
+          "market",
+          "max_price",
+          "min_price",
+          "modal_price",
+          "state",
+          "variety"
+        ],
+        "missing_canonical_fields": [],
+        "complete": null,
+        "total_reported_by_api": null,
+        "record_count": 4476890,
+        "rows_in_scope": 357465
+      },
+      "20261111T190837Z_2023": {
+        "resource_id": "kaggle:khandelwalmanas/daily-commodity-prices-india",
+        "source_kind": "third_party_mirror",
+        "fields": [
+          "arrival_date",
+          "commodity",
+          "commodity_code",
+          "district",
+          "grade",
+          "market",
+          "max_price",
+          "min_price",
+          "modal_price",
+          "state",
+          "variety"
+        ],
+        "missing_canonical_fields": [],
+        "complete": null,
+        "total_reported_by_api": null,
+        "record_count": 4415690,
+        "rows_in_scope": 345563
+      },
+      "20261111T190837Z_2024": {
+        "resource_id": "kaggle:khandelwalmanas/daily-commodity-prices-india",
+        "source_kind": "third_party_mirror",
+        "fields": [
+          "arrival_date",
+          "commodity",
+          "commodity_code",
+          "district",
+          "grade",
+          "market",
+          "max_price",
+          "min_price",
+          "modal_price",
+          "state",
+          "variety"
+        ],
+        "missing_canonical_fields": [],
+        "complete": null,
+        "total_reported_by_api": null,
+        "record_count": 5544500,
+        "rows_in_scope": 280983
+      },
+      "20261111T190837Z_2025": {
+        "resource_id": "kaggle:khandelwalmanas/daily-commodity-prices-india",
+        "source_kind": "third_party_mirror",
+        "fields": [
+          "arrival_date",
+          "commodity",
+          "commodity_code",
+          "district",
+          "grade",
+          "market",
+          "max_price",
+          "min_price",
+          "modal_price",
+          "state",
+          "variety"
+        ],
+        "missing_canonical_fields": [],
+        "complete": null,
+        "total_reported_by_api": null,
+        "record_count": 5819482,
+        "rows_in_scope": 192154
+      },
+      "20261111T190837Z_2026": {
+        "resource_id": "kaggle:khandelwalmanas/daily-commodity-prices-india",
+        "source_kind": "third_party_mirror",
+        "fields": [
+          "arrival_date",
+          "commodity",
+          "commodity_code",
+          "district",
+          "grade",
+          "market",
+          "max_price",
+          "min_price",
+          "modal_price",
+          "state",
+          "variety"
+        ],
+        "missing_canonical_fields": [],
+        "complete": null,
+        "total_reported_by_api": null,
+        "record_count": 593539,
+        "rows_in_scope": 22611
+      },
+      "20261112T045026Z_history-telangana-2026-04-21-2026-11-12": {
+        "resource_id": "35985678-0d79-46b4-9ed6-6f13308a1d24",
+        "source_kind": "official",
+        "fields": [
+          "arrival_date",
+          "commodity",
+          "commodity_code",
+          "district",
+          "grade",
+          "market",
+          "max_price",
+          "min_price",
+          "modal_price",
+          "state",
+          "variety"
+        ],
+        "missing_canonical_fields": [],
+        "complete": true,
+        "total_reported_by_api": 0,
+        "record_count": 90631,
+        "rows_in_scope": 90631
+      },
+      "20261112T045828Z_history-andhra-pradesh-2026-04-21-2026-11-12": {
+        "resource_id": "35985678-0d79-46b4-9ed6-6f13308a1d24",
+        "source_kind": "official",
+        "fields": [
+          "arrival_date",
+          "commodity",
+          "commodity_code",
+          "district",
+          "grade",
+          "market",
+          "max_price",
+          "min_price",
+          "modal_price",
+          "state",
+          "variety"
+        ],
+        "missing_canonical_fields": [],
+        "complete": true,
+        "total_reported_by_api": 1,
+        "record_count": 38425,
+        "rows_in_scope": 38425
+      },
+      "20261112T050824Z_history-karnataka-2026-04-21-2026-11-12": {
+        "resource_id": "35985678-0d79-46b4-9ed6-6f13308a1d24",
+        "source_kind": "official",
+        "fields": [
+          "arrival_date",
+          "commodity",
+          "commodity_code",
+          "district",
+          "grade",
+          "market",
+          "max_price",
+          "min_price",
+          "modal_price",
+          "state",
+          "variety"
+        ],
+        "missing_canonical_fields": [],
+        "complete": true,
+        "total_reported_by_api": 0,
+        "record_count": 170221,
+        "rows_in_scope": 170221
+      }
+    },
+    "integrity_failures": {},
+    "state_scope": [
+      "Telangana",
+      "Andhra Pradesh",
+      "Karnataka"
+    ],
+    "series_coverage_top": [
+      {
+        "state": "Telangana",
+        "district": "Warangal",
+        "market": "Warangal",
+        "commodity": "Green Chilli",
+        "variety": "Green Chilly",
+        "grade": "FAQ",
+        "observations": "1338",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.952"
+      },
+      {
+        "state": "Telangana",
+        "district": "Warangal",
+        "market": "Warangal",
+        "commodity": "Bhindi (Ladies Finger)",
+        "variety": "Bhindi",
+        "grade": "FAQ",
+        "observations": "1332",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.948"
+      },
+      {
+        "state": "Telangana",
+        "district": "Nalgonda",
+        "market": "Devarakonda",
+        "commodity": "Paddy (Dhan)(Common)",
+        "variety": "MTU-1010",
+        "grade": "FAQ",
+        "observations": "1314",
+        "first": "2022-01-01",
+        "last": "2025-10-29",
+        "span_days": "1398",
+        "density": "0.94"
+      },
+      {
+        "state": "Telangana",
+        "district": "Warangal",
+        "market": "Warangal",
+        "commodity": "Brinjal",
+        "variety": "Brinjal",
+        "grade": "FAQ",
+        "observations": "1313",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.935"
+      },
+      {
+        "state": "Telangana",
+        "district": "Warangal",
+        "market": "Warangal",
+        "commodity": "Cucumbar (Kheera)",
+        "variety": "Cucumbar",
+        "grade": "FAQ",
+        "observations": "1313",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.935"
+      },
+      {
+        "state": "Telangana",
+        "district": "Warangal",
+        "market": "Warangal",
+        "commodity": "Bitter gourd",
+        "variety": "Bitter Gourd",
+        "grade": "FAQ",
+        "observations": "1310",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.932"
+      },
+      {
+        "state": "Telangana",
+        "district": "Warangal",
+        "market": "Warangal",
+        "commodity": "Cabbage",
+        "variety": "Cabbage",
+        "grade": "FAQ",
+        "observations": "1310",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.932"
+      },
+      {
+        "state": "Telangana",
+        "district": "Karimnagar",
+        "market": "Jammikunta",
+        "commodity": "Cotton",
+        "variety": "Cotton (Unginned)",
+        "grade": "FAQ",
+        "observations": "1299",
+        "first": "2022-01-01",
+        "last": "2025-10-30",
+        "span_days": "1399",
+        "density": "0.929"
+      },
+      {
+        "state": "Telangana",
+        "district": "Warangal",
+        "market": "Warangal",
+        "commodity": "Carrot",
+        "variety": "Carrot",
+        "grade": "FAQ",
+        "observations": "1297",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.923"
+      },
+      {
+        "state": "Telangana",
+        "district": "Nalgonda",
+        "market": "Kodad",
+        "commodity": "Paddy (Dhan)(Common)",
+        "variety": "B P T",
+        "grade": "FAQ",
+        "observations": "1295",
+        "first": "2022-01-01",
+        "last": "2025-10-25",
+        "span_days": "1394",
+        "density": "0.929"
+      },
+      {
+        "state": "Telangana",
+        "district": "Warangal",
+        "market": "Warangal",
+        "commodity": "Beetroot",
+        "variety": "Beetroot",
+        "grade": "FAQ",
+        "observations": "1293",
+        "first": "2022-01-02",
+        "last": "2025-11-05",
+        "span_days": "1404",
+        "density": "0.921"
+      },
+      {
+        "state": "Telangana",
+        "district": "Warangal",
+        "market": "Warangal",
+        "commodity": "Field Pea",
+        "variety": "Field Pea",
+        "grade": "FAQ",
+        "observations": "1288",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.917"
+      },
+      {
+        "state": "Telangana",
+        "district": "Nalgonda",
+        "market": "Devarkonda (Dindi)",
+        "commodity": "Paddy (Dhan)(Common)",
+        "variety": "MTU-1010",
+        "grade": "FAQ",
+        "observations": "1282",
+        "first": "2022-01-01",
+        "last": "2025-09-03",
+        "span_days": "1342",
+        "density": "0.955"
+      },
+      {
+        "state": "Telangana",
+        "district": "Warangal",
+        "market": "Warangal",
+        "commodity": "Capsicum",
+        "variety": "Capsicum",
+        "grade": "FAQ",
+        "observations": "1281",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.912"
+      },
+      {
+        "state": "Telangana",
+        "district": "Nalgonda",
+        "market": "Devarkonda (Mallepalli)",
+        "commodity": "Paddy (Dhan)(Common)",
+        "variety": "MTU-1010",
+        "grade": "FAQ",
+        "observations": "1278",
+        "first": "2022-01-01",
+        "last": "2025-09-03",
+        "span_days": "1342",
+        "density": "0.952"
+      },
+      {
+        "state": "Telangana",
+        "district": "Hyderabad",
+        "market": "Gudimalkapur",
+        "commodity": "Brinjal",
+        "variety": "Arkasheela Mattigulla",
+        "grade": "FAQ",
+        "observations": "1273",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.906"
+      },
+      {
+        "state": "Telangana",
+        "district": "Warangal",
+        "market": "Warangal",
+        "commodity": "Cluster beans",
+        "variety": "Cluster Beans",
+        "grade": "FAQ",
+        "observations": "1272",
+        "first": "2022-01-01",
+        "last": "2025-10-24",
+        "span_days": "1393",
+        "density": "0.913"
+      },
+      {
+        "state": "Telangana",
+        "district": "Hyderabad",
+        "market": "Gudimalkapur",
+        "commodity": "Green Chilli",
+        "variety": "Green Chilly",
+        "grade": "FAQ",
+        "observations": "1271",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.905"
+      },
+      {
+        "state": "Telangana",
+        "district": "Hyderabad",
+        "market": "Gudimalkapur",
+        "commodity": "Bhindi (Ladies Finger)",
+        "variety": "Bhindi",
+        "grade": "FAQ",
+        "observations": "1271",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.905"
+      },
+      {
+        "state": "Telangana",
+        "district": "Hyderabad",
+        "market": "Gudimalkapur",
+        "commodity": "Bitter gourd",
+        "variety": "Bitter Gourd",
+        "grade": "FAQ",
+        "observations": "1270",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.904"
+      },
+      {
+        "state": "Telangana",
+        "district": "Hyderabad",
+        "market": "Gudimalkapur",
+        "commodity": "Capsicum",
+        "variety": "Capsicum",
+        "grade": "FAQ",
+        "observations": "1267",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.902"
+      },
+      {
+        "state": "Telangana",
+        "district": "Hyderabad",
+        "market": "Gudimalkapur",
+        "commodity": "Potato",
+        "variety": "(Red Nanital)",
+        "grade": "FAQ",
+        "observations": "1265",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.9"
+      },
+      {
+        "state": "Telangana",
+        "district": "Hyderabad",
+        "market": "Gudimalkapur",
+        "commodity": "Bottle gourd",
+        "variety": "Bottle Gourd",
+        "grade": "FAQ",
+        "observations": "1262",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.898"
+      },
+      {
+        "state": "Telangana",
+        "district": "Hyderabad",
+        "market": "Gudimalkapur",
+        "commodity": "Beetroot",
+        "variety": "Beetroot",
+        "grade": "FAQ",
+        "observations": "1262",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.898"
+      },
+      {
+        "state": "Telangana",
+        "district": "Hyderabad",
+        "market": "Gudimalkapur",
+        "commodity": "Onion",
+        "variety": "1st Sort",
+        "grade": "FAQ",
+        "observations": "1262",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.898"
+      },
+      {
+        "state": "Telangana",
+        "district": "Hyderabad",
+        "market": "Gudimalkapur",
+        "commodity": "Cabbage",
+        "variety": "Cabbage",
+        "grade": "FAQ",
+        "observations": "1262",
+        "first": "2022-01-12",
+        "last": "2025-11-05",
+        "span_days": "1394",
+        "density": "0.905"
+      },
+      {
+        "state": "Telangana",
+        "district": "Hyderabad",
+        "market": "Gudimalkapur",
+        "commodity": "Field Pea",
+        "variety": "Field Pea",
+        "grade": "FAQ",
+        "observations": "1261",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.898"
+      },
+      {
+        "state": "Telangana",
+        "district": "Hyderabad",
+        "market": "Gudimalkapur",
+        "commodity": "Cauliflower",
+        "variety": "African Sarson",
+        "grade": "FAQ",
+        "observations": "1260",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.897"
+      },
+      {
+        "state": "Telangana",
+        "district": "Hyderabad",
+        "market": "Gudimalkapur",
+        "commodity": "French Beans (Frasbean)",
+        "variety": "French Beans (Frasbean)",
+        "grade": "FAQ",
+        "observations": "1260",
+        "first": "2022-01-01",
+        "last": "2025-11-05",
+        "span_days": "1405",
+        "density": "0.897"
+      },
+      {
+        "state": "Telangana",
+        "district": "Warangal",
+        "market": "Warangal",
+        "commodity": "Ridgeguard (Tori)",
+        "variety": "Ridgeguard (Tori)",
+        "grade": "FAQ",
+        "observations": "1260",
+        "first": "2022-03-01",
+        "last": "2025-11-05",
+        "span_days": "1346",
+        "density": "0.936"
+      }
+    ]
+  }
+}

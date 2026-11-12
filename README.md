@@ -18,6 +18,8 @@ FastAPI backend (127.0.0.1:8000)
         ├─ services/    market queries, crop statistics
         └─ ml/          features, training, model loading, prediction
 Files:  backend/data/{raw,processed,metadata}   backend/models/
+        (processed data, metadata and trained models are committed, so a fresh clone can forecast;
+         raw downloads are not, ADR-029)
 ```
 
 See `docs/knowledge-graph.mmd` for the full module graph and `DECISIONS.md` for design decisions.
